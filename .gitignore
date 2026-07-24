@@ -20,7 +20,8 @@ bin/
 # Local release staging
 release-assets/Sakoon.exe
 release-assets/SHA256SUMS.txt
-release-assets/Sakoon_App.zip
+release-assets/*.zip
+release-assets/_stage/
 
 # Secrets and signing
 *.pfx
@@ -43,6 +44,10 @@ logs/
 *.sqlite3
 private-tables/
 official-tables/
+
+# Local maintenance tools and notes - not repository content
+FRESH-START.bat
+WHAT-CHANGED.md
 
 # Editors and OS
 .vscode/

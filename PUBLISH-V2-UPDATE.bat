@@ -29,6 +29,8 @@ set "EXE=release-assets\Sakoon.exe"
 set "SAMPLE=release-assets\Sakoon-Table-Format-Example-NOT-OFFICIAL.csv"
 set "CHECKSUMS=release-assets\SHA256SUMS.txt"
 set "NOTES=releases\v2.0.0.md"
+set "ZIPNAME=Sakoon-v2.0.0-Windows.zip"
+set "ZIPPATH=release-assets\%ZIPNAME%"
 set "COMMIT_MSG=Sakoon v2.0.0 - standalone desktop app; docs updated for mute behaviour and no network ports"
 
 set "DRY_RUN=0"
@@ -174,9 +176,33 @@ if "%DRY_RUN%"=="1" (
     echo [4/7] [DRY RUN] Would write SHA-256 sums to %CHECKSUMS%
     goto after_sums
 )
-echo [4/7] Generating SHA-256 checksums...
+echo [4/7] Packaging and generating SHA-256 checksums...
+rem ---- Package the exe into a distributable zip ------------------
+rem  A bare .exe download makes browsers show their own "isn't
+rem  commonly downloaded" banner before Windows even gets involved.
+rem  Shipping a zip removes that first warning and lets the download
+rem  carry README-FIRST.txt and the licence. It does NOT remove the
+rem  SmartScreen prompt on first run - only code signing does that -
+rem  so README-FIRST.txt explains the prompt honestly.
+echo   Packaging %ZIPNAME% ...
+if exist "%ZIPPATH%" del /q "%ZIPPATH%"
+if exist "release-assets\_stage" rmdir /s /q "release-assets\_stage"
+mkdir "release-assets\_stage"
+copy /y "%EXE%" "release-assets\_stage\Sakoon.exe" >nul
+copy /y "release-assets\README-FIRST.txt" "release-assets\_stage\README-FIRST.txt" >nul
+if exist "LICENSE.txt" copy /y "LICENSE.txt" "release-assets\_stage\LICENSE.txt" >nul
+if exist "%SAMPLE%" copy /y "%SAMPLE%" "release-assets\_stage\Sakoon-Table-Format-Example-NOT-OFFICIAL.csv" >nul
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$files = @('%EXE%', '%SAMPLE%');" ^
+  "Compress-Archive -Path 'release-assets\_stage\*' -DestinationPath '%ZIPPATH%' -Force"
+if errorlevel 1 (
+    echo   [ERROR] Could not build %ZIPNAME%.
+    exit /b 43
+)
+rmdir /s /q "release-assets\_stage"
+for %%A in ("%ZIPPATH%") do echo   %ZIPNAME%  ^(%%~zA bytes^)
+
+powershell -NoProfile -ExecutionPolicy Bypass -Command ^
+  "$files = @('%ZIPPATH%', '%EXE%', '%SAMPLE%');" ^
   "$lines = foreach ($f in $files) {" ^
   "  if (Test-Path -LiteralPath $f) {" ^
   "    $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $f).Hash.ToLower();" ^
@@ -331,7 +357,8 @@ if not errorlevel 1 (
     )
 )
 gh release create "%TAG%" ^
-  "%EXE%#Sakoon for Windows (single file)" ^
+  "%ZIPPATH%#Sakoon for Windows - download this" ^
+  "%EXE%#Sakoon.exe on its own (advanced)" ^
   "%SAMPLE%#Timing-table format example - not official" ^
   "%CHECKSUMS%#SHA-256 checksums" ^
   --repo "%REPO%" ^

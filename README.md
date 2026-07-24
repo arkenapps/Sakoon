@@ -16,7 +16,7 @@ the previous audio state afterwards.
 ![Telemetry](https://img.shields.io/badge/telemetry-none-4FD8EB)
 ![Licence](https://img.shields.io/badge/licence-personal%20use-0C1624)
 
-[Download Sakoon](https://github.com/arkenapps/Sakoon/releases/latest/download/Sakoon.exe)
+[Download Sakoon](https://github.com/arkenapps/Sakoon/releases/latest)
 ·
 [Product website](https://arkenapps.com/azaan-audio-guard.html)
 ·
@@ -149,6 +149,12 @@ hash.
 **Requirements:** Windows 10 or 11. The app window uses Microsoft Edge
 WebView2, which ships with Windows 11 and current Windows 10; on the rare
 machine without it, Windows offers a one-time free install on first launch.
+
+**About the SmartScreen warning:** Sakoon is not code-signed, so Windows shows
+"Windows protected your PC" the first time it runs. That reflects the
+application being new and unrecognised rather than anything detected in the
+file. Choose More info, then Run anyway. Verify the published SHA-256 hash
+first if you would prefer certainty about what you downloaded.
 
 ## Official table format
 

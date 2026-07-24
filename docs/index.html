@@ -21,931 +21,552 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
-    :root {
-      --bg: #070D16;
-      --surface: #0C1624;
-      --surface-2: #101D2D;
-      --surface-3: #132337;
-      --cyan: #4FD8EB;
-      --cyan-soft: #8DE8F3;
-      --brass: #C9A45C;
-      --brass-light: #E8C97F;
-      --text: #EAF5F7;
-      --muted: #8FA5B8;
-      --line: rgba(79,216,235,.19);
-      --danger: #E8786D;
-      --max: 1180px;
-      --shadow: 0 28px 80px rgba(0,0,0,.34);
+    :root{
+      --ink:#070D16; --deep:#0C1624;
+      --cyan:#4FD8EB; --cyan-soft:#8DE8F3; --cyan-dim:rgba(79,216,235,.34);
+      --brass:#C9A45C; --brass-light:#E8C97F;
+      --text:#EAF5F7; --muted:#8FA5B8; --faint:#5C7188;
+      --line:rgba(79,216,235,.16); --line-soft:rgba(148,197,255,.09);
+      --glass:rgba(148,197,255,.045);
+      --max:1160px;
+      --display:"Bahnschrift","Segoe UI Semibold","Segoe UI",sans-serif;
+      --body:"Segoe UI",system-ui,-apple-system,sans-serif;
+      --mono:"Cascadia Mono",Consolas,monospace;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--text); font-family:var(--body); line-height:1.65;
+      background:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased;
+    }
+
+    .sky{position:fixed;inset:0;z-index:-2;pointer-events:none;
       background:
-        radial-gradient(circle at 17% 8%, rgba(79,216,235,.11), transparent 31rem),
-        radial-gradient(circle at 87% 19%, rgba(201,164,92,.09), transparent 27rem),
-        var(--bg);
-      color: var(--text);
-      font-family: "Segoe UI", Bahnschrift, system-ui, -apple-system, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
+        radial-gradient(1100px 680px at 78% -6%,rgba(79,216,235,.13),transparent 62%),
+        radial-gradient(900px 620px at 6% 104%,rgba(201,164,92,.10),transparent 60%),
+        linear-gradient(178deg,var(--deep),var(--ink) 66%);
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .28;
+    .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
       background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, black, transparent 75%);
-      z-index: -1;
+        radial-gradient(1.4px 1.4px at 18% 22%,rgba(217,228,240,.9),transparent),
+        radial-gradient(1.1px 1.1px at 62% 12%,rgba(217,228,240,.55),transparent),
+        radial-gradient(1.6px 1.6px at 84% 46%,rgba(217,228,240,.7),transparent),
+        radial-gradient(1.1px 1.1px at 34% 68%,rgba(217,228,240,.5),transparent),
+        radial-gradient(1.3px 1.3px at 8% 86%,rgba(217,228,240,.65),transparent),
+        radial-gradient(1px 1px at 72% 88%,rgba(217,228,240,.45),transparent);
+      background-size:280px 280px,340px 340px,420px 420px,300px 300px,380px 380px,460px 460px;
+      animation:twinkle 8s ease-in-out infinite;
     }
+    @keyframes twinkle{0%,100%{opacity:.38}50%{opacity:.62}}
 
-    a { color: inherit; }
-    img { max-width: 100%; display: block; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    .wrap { width: min(calc(100% - 36px), var(--max)); margin-inline: auto; }
+    .wrap{width:min(100% - 40px,var(--max));margin-inline:auto}
 
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid rgba(79,216,235,.13);
-      background: rgba(7,13,22,.82);
-      backdrop-filter: blur(18px);
+    .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:.32s ease}
+    .site-header.stuck{
+      background:rgba(7,13,22,.82);backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom-color:var(--line);
     }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;transition:.32s ease}
+    .site-header.stuck .nav{padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{width:38px;height:38px;border-radius:11px}
+    .brand span{font-family:var(--display);letter-spacing:.34em;font-size:.95rem;line-height:1.15}
+    .brand small{display:block;letter-spacing:.16em;font-size:.6rem;color:var(--faint);font-family:var(--body)}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+    .nav-links a:hover{color:var(--cyan)}
 
-    .nav {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
+    .button{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+      font-family:var(--display);letter-spacing:.1em;font-size:.82rem;
+      padding:13px 26px;border-radius:999px;border:1px solid var(--line);
+      color:var(--text);background:var(--glass);transition:.24s ease;white-space:nowrap}
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{background:linear-gradient(135deg,var(--cyan),#39b9cc);color:#04202a;border-color:transparent;font-weight:600}
+    .button.primary:hover{box-shadow:0 12px 34px rgba(79,216,235,.34)}
+    .button.brass{background:linear-gradient(135deg,var(--brass-light),var(--brass));color:#2a1d06;border-color:transparent;font-weight:600}
+    .button.brass:hover{box-shadow:0 12px 34px rgba(201,164,92,.32)}
+    .button.ghost:hover{border-color:var(--cyan-dim);color:var(--cyan)}
+    .button.compact{padding:9px 18px;font-size:.76rem}
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: .24em;
-    }
+    .hero{position:relative;padding:74px 0 40px;overflow:hidden}
+    .hero-glyph{position:absolute;right:-2%;top:2%;font-size:23rem;line-height:1;
+      color:rgba(79,216,235,.035);pointer-events:none;user-select:none;font-family:var(--display)}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);
+      font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);
+      padding:7px 15px;border:1px solid var(--cyan-dim);border-radius:999px;background:rgba(79,216,235,.06)}
+    .hero h1{font-family:var(--display);font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.08;
+      margin:22px 0 0;letter-spacing:-.01em;font-weight:600}
+    .hero h1 span{background:linear-gradient(120deg,var(--cyan),var(--brass-light));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero h1 em{font-style:normal;color:var(--brass);font-size:.62em;display:block;margin-top:8px;letter-spacing:.06em}
+    .hero p.lede{color:var(--muted);font-size:1.06rem;margin:20px 0 0;max-width:34rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+    .micro{color:var(--faint);font-size:.78rem;margin-top:18px}
 
-    .brand img { width: 42px; height: 42px; border-radius: 50%; }
-    .brand small {
-      display: block;
-      margin-top: -3px;
-      color: var(--muted);
-      letter-spacing: .15em;
-      font-size: .62rem;
-      font-weight: 600;
-    }
+    .dial-frame{position:relative;display:grid;place-items:center;aspect-ratio:1;max-width:430px;margin-inline:auto;width:100%}
+    .dial-frame::before{content:"";position:absolute;inset:8%;border-radius:50%;
+      background:radial-gradient(circle,rgba(79,216,235,.11),transparent 68%);filter:blur(14px)}
+    .dial{width:100%;height:auto;position:relative}
+    .dial .ring{fill:none;stroke:var(--line);stroke-width:1}
+    .dial .arc{fill:none;stroke:var(--brass);stroke-width:1.6;opacity:.5;stroke-linecap:round}
+    .dial .tick{stroke:rgba(148,197,255,.22);stroke-width:1}
+    .dial .node{fill:var(--ink);stroke:var(--cyan);stroke-width:1.6}
+    .dial .node.on{fill:var(--cyan);animation:pulse 3.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+    .dial .lbl{font-family:var(--display);font-size:8.5px;letter-spacing:.16em;fill:var(--faint)}
+    .dial .lbl.on{fill:var(--cyan)}
+    .hand{transform-origin:210px 210px;animation:sweep 72s linear infinite}
+    @keyframes sweep{to{transform:rotate(360deg)}}
+    .dial-core{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none;z-index:2}
+    .dial-core .k{font-family:var(--display);font-size:.6rem;letter-spacing:.26em;color:var(--faint)}
+    .dial-core .v{font-family:var(--display);font-size:1.5rem;letter-spacing:.13em;color:var(--text);margin:2px 0}
+    .dial-core .t{font-family:var(--mono);font-size:1.55rem;color:var(--cyan);letter-spacing:.04em}
+    .dial-core .s{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:2px}
 
-    .nav-links { display: flex; align-items: center; gap: 22px; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: .92rem;
-      font-weight: 650;
-    }
-    .nav-links a:hover { color: var(--cyan); }
+    .trust{display:grid;grid-template-columns:repeat(5,1fr);border-block:1px solid var(--line);margin-top:52px}
+    .trust div{padding:20px 22px;border-right:1px solid var(--line)}
+    .trust div:last-child{border-right:0}
+    .trust strong{display:block;color:var(--cyan-soft);font-size:.9rem;font-weight:600}
+    .trust span{color:var(--faint);font-size:.78rem}
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 1px solid transparent;
-      border-radius: 13px;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: .02em;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button.primary {
-      background: var(--cyan);
-      color: #06101A;
-      box-shadow: 0 12px 32px rgba(79,216,235,.19);
-    }
-    .button.secondary {
-      border-color: rgba(79,216,235,.32);
-      background: rgba(12,22,36,.68);
-      color: var(--text);
-    }
-    .button.brass {
-      background: var(--brass);
-      color: #0A111A;
-    }
-    .button.compact { min-height: 40px; padding: 0 16px; border-radius: 10px; font-size: .88rem; }
+    section{padding:76px 0}
+    .head{max-width:44rem;margin-bottom:44px}
+    .head h2{font-family:var(--display);font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.16;margin:16px 0 0;font-weight:600}
+    .head p{color:var(--muted);margin:14px 0 0;font-size:1rem}
 
-    .hero {
-      position: relative;
-      min-height: 760px;
-      display: grid;
-      align-items: center;
-      padding: 86px 0 72px;
-    }
+    .card{background:var(--glass);border:1px solid var(--line-soft);border-radius:16px;padding:26px;
+      transition:.26s ease;position:relative;overflow:hidden}
+    .card:hover{border-color:var(--cyan-dim);transform:translateY(-3px);background:rgba(148,197,255,.07)}
+    .card h3{font-family:var(--display);font-size:1.02rem;margin:0 0 9px;letter-spacing:.02em;font-weight:600}
+    .card p{color:var(--muted);font-size:.9rem;margin:0}
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.02fr .98fr;
-      gap: 56px;
-      align-items: center;
-    }
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      color: var(--cyan);
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      font-size: .78rem;
-    }
+    .story{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+    .quote{font-family:var(--display);font-size:1.32rem;line-height:1.45;color:var(--cyan-soft);
+      border-left:2px solid var(--brass);padding-left:24px}
+    .story p{color:var(--muted);margin:0 0 16px}
+    .story strong{color:var(--text)}
 
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: var(--cyan);
-      box-shadow: 0 0 12px var(--cyan);
-    }
+    .rail{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden}
+    .rail div{padding:26px 20px;border-right:1px solid var(--line-soft);text-align:center;transition:.24s}
+    .rail div:last-child{border-right:0}
+    .rail div:hover{background:rgba(148,197,255,.05)}
+    .rail .ar{font-size:1.5rem;color:var(--brass);line-height:1}
+    .rail .en{font-family:var(--display);letter-spacing:.2em;font-size:.76rem;color:var(--text);margin-top:10px}
+    .rail .no{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:4px}
 
-    h1, h2, h3 { line-height: 1.12; margin-top: 0; }
-    h1 {
-      max-width: 760px;
-      margin-bottom: 24px;
-      font-size: clamp(3.2rem, 7.4vw, 6.35rem);
-      letter-spacing: -.055em;
-    }
-    h1 span { color: var(--cyan); }
-    h1 em {
-      color: var(--brass-light);
-      font-style: normal;
-      font-family: Georgia, serif;
-      font-weight: 500;
-    }
+    .src{padding:30px}
+    .src .tag{font-family:var(--display);font-size:.64rem;letter-spacing:.2em;padding:5px 12px;
+      border-radius:999px;display:inline-block;margin-bottom:16px}
+    .src.official .tag{color:var(--ink);background:var(--cyan)}
+    .src.calc .tag{color:var(--brass-light);border:1px solid rgba(201,164,92,.4)}
+    .src ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:.9rem}
+    .src li{margin-bottom:7px}
 
-    .hero-copy > p {
-      max-width: 650px;
-      margin: 0 0 30px;
-      color: #B9C8D3;
-      font-size: clamp(1.08rem, 1.5vw, 1.27rem);
-    }
+    .rule{padding:24px}
+    .rule .n{font-family:var(--mono);font-size:.72rem;color:var(--brass);letter-spacing:.14em;margin-bottom:12px}
 
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .micro-note {
-      margin-top: 19px;
-      color: var(--muted);
-      font-size: .88rem;
-    }
+    .shot{border:1px solid var(--line-soft);border-radius:18px;overflow:hidden;background:var(--deep)}
+    .shot img{width:100%;display:block}
+    .shot-meta{padding:18px 22px;border-top:1px solid var(--line-soft)}
+    .shot-meta strong{font-family:var(--display);letter-spacing:.04em;font-size:.94rem}
+    .shot-meta p{color:var(--muted);font-size:.86rem;margin:5px 0 0}
+    .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
+    .thumb{padding:0;border:1px solid var(--line-soft);border-radius:11px;overflow:hidden;
+      background:none;cursor:pointer;transition:.2s;opacity:.5}
+    .thumb img{width:100%;display:block}
+    .thumb:hover{opacity:.85}
+    .thumb.active{opacity:1;border-color:var(--cyan)}
 
-    .hero-visual {
-      position: relative;
-      min-height: 560px;
-      display: grid;
-      place-items: center;
-    }
+    .regions{display:flex;flex-wrap:wrap;gap:10px}
+    .regions span{padding:9px 17px;border:1px solid var(--line-soft);border-radius:999px;
+      color:var(--muted);font-size:.84rem;transition:.2s}
+    .regions span:hover{border-color:var(--cyan-dim);color:var(--cyan)}
 
-    .orbit {
-      position: absolute;
-      width: min(510px, 92vw);
-      aspect-ratio: 1;
-      border: 1px solid rgba(79,216,235,.18);
-      border-radius: 50%;
-      animation: orbitSpin 55s linear infinite;
-    }
-    .orbit::before,
-    .orbit::after {
-      content: "";
-      position: absolute;
-      inset: 9%;
-      border: 1px dashed rgba(201,164,92,.22);
-      border-radius: inherit;
-    }
-    .orbit::after {
-      inset: 23%;
-      border-style: solid;
-      border-color: rgba(79,216,235,.12);
-    }
-    .orbit-dot {
-      position: absolute;
-      width: 11px;
-      height: 11px;
-      top: -6px;
-      left: 50%;
-      border-radius: 50%;
-      background: var(--brass);
-      box-shadow: 0 0 22px var(--brass);
-    }
+    .dl{border:1px solid var(--line);border-radius:22px;padding:44px;
+      background:linear-gradient(140deg,rgba(79,216,235,.075),rgba(201,164,92,.05));
+      display:grid;grid-template-columns:1.4fr auto;gap:34px;align-items:center}
+    .dl h2{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.05rem);margin:16px 0 0;font-weight:600}
+    .dl p{color:var(--muted);margin:14px 0 0;max-width:33rem}
+    .dl-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .dl-meta span{font-family:var(--mono);font-size:.72rem;color:var(--faint);
+      border:1px solid var(--line-soft);border-radius:7px;padding:5px 11px}
 
-    .app-card {
-      position: relative;
-      width: min(570px, 96vw);
-      padding: 13px;
-      border: 1px solid rgba(79,216,235,.28);
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(16,29,45,.96), rgba(7,13,22,.94));
-      box-shadow: var(--shadow);
-      transform: rotate(1.2deg);
-    }
-    .app-card::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(120deg, rgba(79,216,235,.34), transparent 30%, transparent 72%, rgba(201,164,92,.25));
-      z-index: -1;
-      filter: blur(15px);
-      opacity: .6;
-    }
-    .app-card img {
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .floating-pill {
-      position: absolute;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border: 1px solid rgba(79,216,235,.24);
-      border-radius: 999px;
-      background: rgba(7,13,22,.92);
-      color: var(--cyan);
-      font-size: .75rem;
-      font-weight: 900;
-      letter-spacing: .11em;
-      box-shadow: 0 12px 30px rgba(0,0,0,.28);
-    }
-    .floating-pill.one { top: 6%; right: -5%; }
-    .floating-pill.two { bottom: 8%; left: -7%; color: var(--brass-light); }
-    .pulse {
-      width: 8px; height: 8px; border-radius: 50%; background: currentColor;
-      box-shadow: 0 0 0 0 currentColor;
-      animation: pulse 2.1s infinite;
-    }
+    .notice{border:1px solid rgba(201,164,92,.28);border-left:3px solid var(--brass);
+      border-radius:14px;padding:26px 28px;background:rgba(201,164,92,.05);margin-top:26px}
+    .notice h3{font-family:var(--display);font-size:1rem;margin:0 0 10px;color:var(--brass-light);font-weight:600}
+    .notice p{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+    .notice p:last-child{margin-bottom:0}
+    .notice code{font-family:var(--mono);font-size:.82rem;color:var(--cyan-soft);
+      background:rgba(79,216,235,.08);padding:2px 7px;border-radius:5px}
 
-    .trust-strip {
-      border-block: 1px solid var(--line);
-      background: rgba(12,22,36,.55);
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      min-height: 112px;
-    }
-    .trust-item {
-      display: grid;
-      place-items: center;
-      padding: 20px 14px;
-      text-align: center;
-      border-right: 1px solid var(--line);
-    }
-    .trust-item:last-child { border-right: 0; }
-    .trust-item strong { display: block; color: var(--cyan-soft); }
-    .trust-item span { color: var(--muted); font-size: .82rem; }
+    details{border-bottom:1px solid var(--line-soft);padding:20px 0}
+    summary{cursor:pointer;font-family:var(--display);font-size:1rem;list-style:none;
+      display:flex;justify-content:space-between;gap:18px;align-items:center;font-weight:600}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";color:var(--cyan);font-size:1.25rem;flex:none;transition:.2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{color:var(--muted);font-size:.92rem;margin:14px 0 0;max-width:52rem}
 
-    section { padding: 112px 0; }
-    .section-head { max-width: 760px; margin-bottom: 50px; }
-    .section-head h2 {
-      margin-bottom: 18px;
-      font-size: clamp(2.25rem, 5vw, 4.15rem);
-      letter-spacing: -.04em;
-    }
-    .section-head p { color: var(--muted); font-size: 1.08rem; }
+    .disclaimer{border:1px solid rgba(232,120,109,.26);border-left:3px solid #E8786D;
+      border-radius:14px;padding:26px 28px;background:rgba(232,120,109,.05)}
+    .disclaimer h3{font-family:var(--display);font-size:1rem;margin:0 0 10px;color:#F0A49C;font-weight:600}
+    .disclaimer p{color:var(--muted);font-size:.92rem;margin:0}
 
-    .story-grid {
-      display: grid;
-      grid-template-columns: .88fr 1.12fr;
-      gap: 52px;
-      align-items: start;
-    }
-    .quote {
-      position: sticky;
-      top: 112px;
-      padding: 34px;
-      border: 1px solid rgba(201,164,92,.25);
-      border-radius: 20px;
-      background: linear-gradient(150deg, rgba(201,164,92,.08), rgba(12,22,36,.72));
-      font-family: Georgia, serif;
-      font-size: clamp(1.55rem, 3vw, 2.5rem);
-      line-height: 1.35;
-      color: #F3E5C4;
-    }
-    .story-copy {
-      display: grid;
-      gap: 20px;
-      color: #B7C7D2;
-      font-size: 1.05rem;
-    }
-    .story-copy strong { color: var(--text); }
+    footer{border-top:1px solid var(--line);padding:38px 0 46px;margin-top:30px}
+    .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:26px;color:var(--faint);font-size:.85rem}
+    .foot a{color:var(--muted);text-decoration:none}
+    .foot a:hover{color:var(--cyan)}
+    .dua{color:var(--brass);font-style:italic}
 
-    .philosophy-grid,
-    .feature-grid,
-    .rule-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 17px;
-    }
-    .card {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(150deg, rgba(16,29,45,.88), rgba(10,18,29,.86));
-      box-shadow: 0 18px 45px rgba(0,0,0,.14);
-    }
-    .card .number {
-      color: var(--brass);
-      font-weight: 900;
-      letter-spacing: .12em;
-      font-size: .72rem;
-    }
-    .card h3 { margin: 14px 0 12px; font-size: 1.25rem; }
-    .card p { color: var(--muted); margin-bottom: 0; }
-    .card.highlight {
-      border-color: rgba(79,216,235,.46);
-      box-shadow: inset 0 0 40px rgba(79,216,235,.035), 0 18px 45px rgba(0,0,0,.16);
-    }
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .rv.in{opacity:1;transform:none}
 
-    .honesty {
-      padding: 18px 24px;
-      margin-top: 32px;
-      border-left: 3px solid var(--danger);
-      background: rgba(232,120,109,.065);
-      color: #EDB4AE;
+    @media (max-width:960px){
+      .hero-grid,.story,.dl{grid-template-columns:1fr}
+      .dial-frame{max-width:340px;margin-top:14px}
+      .trust,.rail{grid-template-columns:repeat(2,1fr)}
+      .trust div,.rail div{border-right:0;border-bottom:1px solid var(--line-soft)}
+      .grid-4,.grid-5,.grid-2{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr}
+      .nav-links a:not(.button){display:none}
+      .hero-glyph{font-size:13rem}
     }
-
-    .gallery-shell {
-      position: relative;
-      padding: 20px;
-      border: 1px solid rgba(79,216,235,.24);
-      border-radius: 24px;
-      background: rgba(12,22,36,.78);
-      box-shadow: var(--shadow);
+    @media (max-width:620px){
+      .trust,.rail,.grid-4,.grid-5,.grid-2{grid-template-columns:1fr}
+      .thumbs{grid-template-columns:repeat(2,1fr)}
+      section{padding:56px 0}
+      .dl{padding:30px}
     }
-    .gallery-main {
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 15px;
-      background: #07101B;
-    }
-    .gallery-main img { width: 100%; aspect-ratio: 16/8.9; object-fit: cover; object-position: top; }
-    .gallery-caption {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 22px;
-      padding: 17px 4px 2px;
-    }
-    .gallery-caption p { margin: 0; color: var(--muted); }
-    .gallery-thumbs {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 11px;
-      margin-top: 15px;
-    }
-    .thumb {
-      border: 1px solid transparent;
-      border-radius: 12px;
-      padding: 0;
-      overflow: hidden;
-      cursor: pointer;
-      background: #0C1624;
-      opacity: .58;
-      transition: .2s ease;
-    }
-    .thumb img { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; }
-    .thumb.active, .thumb:hover { opacity: 1; border-color: var(--cyan); transform: translateY(-2px); }
-
-    .feature-grid { grid-template-columns: repeat(4, 1fr); }
-    .feature-card {
-      min-height: 210px;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::after {
-      content: "";
-      position: absolute;
-      width: 90px;
-      height: 90px;
-      right: -35px;
-      bottom: -35px;
-      border: 1px solid rgba(79,216,235,.18);
-      border-radius: 50%;
-    }
-    .icon-chip {
-      width: 42px; height: 42px; display: grid; place-items: center;
-      border-radius: 12px; background: rgba(79,216,235,.09);
-      color: var(--cyan); font-size: 1.15rem; font-weight: 900;
-    }
-
-    .rule-grid { grid-template-columns: repeat(5, 1fr); }
-    .rule-card { padding: 23px; }
-    .rule-card h3 { font-size: 1rem; }
-
-    .region-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .region-cloud span {
-      padding: 9px 14px;
-      border: 1px solid rgba(79,216,235,.20);
-      border-radius: 999px;
-      color: #BFD5DE;
-      background: rgba(12,22,36,.68);
-      font-size: .9rem;
-    }
-
-    .download-panel {
-      position: relative;
-      overflow: hidden;
-      padding: 54px;
-      border: 1px solid rgba(79,216,235,.32);
-      border-radius: 26px;
-      background:
-        radial-gradient(circle at 85% 25%, rgba(79,216,235,.16), transparent 18rem),
-        radial-gradient(circle at 12% 90%, rgba(201,164,92,.13), transparent 19rem),
-        #0C1624;
-      box-shadow: var(--shadow);
-    }
-    .download-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
-      align-items: center;
-    }
-    .download-panel h2 { margin-bottom: 15px; font-size: clamp(2.25rem, 5vw, 4rem); }
-    .download-panel p { max-width: 720px; color: var(--muted); }
-    .download-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      margin-top: 18px;
-      color: #B8C8D3;
-      font-size: .88rem;
-    }
-
-    .faq { display: grid; gap: 12px; }
-    details {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(12,22,36,.62);
-      overflow: hidden;
-    }
-    summary {
-      cursor: pointer;
-      padding: 20px 22px;
-      font-weight: 800;
-      list-style: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    details p { margin: 0; padding: 0 22px 22px; color: var(--muted); }
-
-    .disclaimer {
-      padding: 30px;
-      border: 1px solid rgba(232,120,109,.25);
-      border-radius: 18px;
-      background: rgba(232,120,109,.055);
-    }
-    .disclaimer h3 { color: #F0B2AB; }
-    .disclaimer p { color: #C9A9A6; margin-bottom: 0; }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 40px 0;
-      color: var(--muted);
-    }
-    .footer-grid {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .footer-grid a { color: #B8C8D3; text-decoration: none; }
-    .footer-grid a:hover { color: var(--cyan); }
-    .dua { color: var(--brass-light); font-family: Georgia, serif; }
-
-    .mobile-menu { display: none; }
-
-    @keyframes orbitSpin { to { transform: rotate(360deg); } }
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 11px rgba(79,216,235,0); }
-      100% { box-shadow: 0 0 0 0 rgba(79,216,235,0); }
-    }
-
-    @media (max-width: 980px) {
-      .nav-links a:not(.button) { display: none; }
-      .hero { min-height: auto; }
-      .hero-grid, .story-grid, .download-grid { grid-template-columns: 1fr; }
-      .hero-copy { text-align: center; }
-      .hero-copy > p { margin-inline: auto; }
-      .eyebrow { justify-content: center; }
-      .hero-actions { justify-content: center; }
-      .hero-visual { min-height: 500px; }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); }
-      .trust-item { border-bottom: 1px solid var(--line); }
-      .philosophy-grid, .feature-grid { grid-template-columns: repeat(2, 1fr); }
-      .rule-grid { grid-template-columns: repeat(2, 1fr); }
-      .quote { position: static; }
-      .download-grid > .button { justify-self: start; }
-    }
-
-    @media (max-width: 640px) {
-      .wrap { width: min(calc(100% - 24px), var(--max)); }
-      .site-header .button { display: none; }
-      h1 { font-size: clamp(3rem, 17vw, 4.2rem); }
-      .hero { padding-top: 58px; }
-      .hero-visual { min-height: 390px; }
-      .app-card { width: 100%; transform: none; }
-      .orbit { width: 340px; }
-      .floating-pill { display: none; }
-      section { padding: 76px 0; }
-      .trust-grid, .philosophy-grid, .feature-grid, .rule-grid { grid-template-columns: 1fr; }
-      .trust-item { border-right: 0; }
-      .gallery-shell { padding: 9px; }
-      .gallery-thumbs { grid-template-columns: repeat(3, 1fr); }
-      .gallery-thumbs .thumb:nth-child(n+4) { display: none; }
-      .gallery-caption { align-items: flex-start; flex-direction: column; }
-      .download-panel { padding: 30px 24px; }
-      .button { width: 100%; }
-      .hero-actions .button { width: auto; flex: 1 1 220px; }
-      .footer-grid { align-items: flex-start; flex-direction: column; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
-      }
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important;transition:none !important}
+      .rv{opacity:1;transform:none}
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Sakoon home">
-        <img src="sakoon-assets/sakoon-icon-256.png" alt="">
-        <span>SAKOON<small>AZAAN AUDIO GUARD</small></span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#how">How it works</a>
-        <a href="#screens">Screenshots</a>
-        <a href="#privacy">Privacy</a>
-        <a href="https://github.com/arkenapps/Sakoon" target="_blank" rel="noopener">GitHub</a>
-        <a class="button compact primary" href="https://github.com/arkenapps/Sakoon/releases/latest/download/Sakoon.exe">Download</a>
-      </nav>
-    </div>
-  </header>
+<div class="sky" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Free Windows desktop utility · v2.0.0</div>
-          <h1>Your PC can observe the <span>azaan</span> too. <em>سكون</em></h1>
-          <p>
-            Sakoon mutes system audio before each azaan, keeps the computer
-            quiet through the configured window, and restores the previous
-            audio state afterwards—without accounts, ads, telemetry, or cloud
-            dependency.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://github.com/arkenapps/Sakoon/releases/latest/download/Sakoon.exe">Download Sakoon</a>
-            <a class="button secondary" href="https://github.com/arkenapps/Sakoon/releases/latest" target="_blank" rel="noopener">View release</a>
-            <a class="button secondary" href="#screens">See the app</a>
-          </div>
-          <div class="micro-note">Windows · No admin rights · Free for personal use · Source code remains private</div>
-        </div>
+<header class="site-header" id="siteHeader">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Sakoon home">
+      <img src="sakoon-assets/sakoon-icon-256.png" alt="">
+      <span>SAKOON<small>AZAAN AUDIO GUARD</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#screens">Screenshots</a>
+      <a href="#privacy">Privacy</a>
+      <a href="https://github.com/arkenapps/Sakoon" target="_blank" rel="noopener">GitHub</a>
+      <a class="button primary compact" href="https://github.com/arkenapps/Sakoon/releases/latest">Download</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="hero-visual" aria-label="Sakoon application preview">
-          <div class="orbit" aria-hidden="true"><span class="orbit-dot"></span></div>
-          <div class="app-card">
-            <img src="sakoon-assets/dashboard.webp" alt="Sakoon dashboard showing the astrolabe dial and prayer schedule">
-          </div>
-          <div class="floating-pill one"><span class="pulse"></span> ARMED · LOCAL</div>
-          <div class="floating-pill two">CALCULATED — UNOFFICIAL</div>
-        </div>
-      </div>
-    </section>
+<main id="top">
 
-    <div class="trust-strip">
-      <div class="wrap trust-grid">
-        <div class="trust-item"><div><strong>Official tables first</strong><span>CSV and Excel uploads</span></div></div>
-        <div class="trust-item"><div><strong>Your volume untouched</strong><span>It mutes; it never moves the slider</span></div></div>
-        <div class="trust-item"><div><strong>Crash-aware recovery</strong><span>Protects the previous audio state</span></div></div>
-        <div class="trust-item"><div><strong>100% local</strong><span>No open network ports</span></div></div>
-        <div class="trust-item"><div><strong>No telemetry</strong><span>No account, ads, or tracking</span></div></div>
-      </div>
-    </div>
-
-    <section id="how">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">The mall moment</div>
-          <h2>A small courtesy, made automatic.</h2>
-          <p>
-            In many GCC malls, music stops when the azaan begins. Sakoon brings
-            that same moment of stillness to the Windows desktop.
-          </p>
-        </div>
-
-        <div class="story-grid">
-          <div class="quote">
-            “The building itself observes the moment. Sakoon lets your computer
-            do the same.”
-          </div>
-          <div class="story-copy">
-            <p>
-              You may be working with music playing, watching a video, or using
-              an application when the azaan begins. Instead of reaching for the
-              volume key five times a day, Sakoon handles the audio window for
-              you and hands it straight back.
-            </p>
-            <p>
-              <strong>It does not play the azaan and it does not replace a
-              prayer reminder.</strong> It simply manages your PC audio around
-              the timing source you have selected.
-            </p>
-            <p>
-              The name means <strong>stillness</strong>. That is the entire
-              idea: mute, pause, restore, and get out of the way.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Timing philosophy</div>
-          <h2>Official authority first. Astronomy as a watchdog.</h2>
-          <p>
-            Prayer times vary by authority, region, method, and deliberate
-            precaution offsets. Sakoon keeps those responsibilities separate.
-          </p>
-        </div>
-
-        <div class="philosophy-grid">
-          <article class="card highlight">
-            <div class="number">01 · SOURCE OF TRUTH</div>
-            <h3>Official monthly tables</h3>
-            <p>
-              Upload the CSV or Excel table published for your region. Imports
-              are versioned and checksummed rather than silently overwritten.
-            </p>
-          </article>
-          <article class="card">
-            <div class="number">02 · FALLBACK</div>
-            <h3>Local solar calculation</h3>
-            <p>
-              When no official table is available, Sakoon can calculate locally.
-              It is always labelled <strong>CALCULATED — UNOFFICIAL</strong>.
-            </p>
-          </article>
-          <article class="card">
-            <div class="number">03 · VERIFICATION</div>
-            <h3>Delta view</h3>
-            <p>
-              Official-versus-calculated differences help expose shifted
-              columns, wrong dates, and corrupted imports before they affect
-              audio scheduling.
-            </p>
-          </article>
-        </div>
-
-        <div class="honesty">
-          Sakoon never presents an astronomical estimate as an official ruling.
-          The relevant awqaf publication and your local mosque always take
-          precedence.
-        </div>
-      </div>
-    </section>
-
-    <section id="screens">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Inside Sakoon</div>
-          <h2>A quiet, night-observatory interface.</h2>
-          <p>
-            The 24-hour astrolabe dial plots the five prayers at their actual
-            clock positions, while the surrounding views keep timing sources,
-            verification, and audio settings visible.
-          </p>
-        </div>
-
-        <div class="gallery-shell">
-          <div class="gallery-main">
-            <img id="galleryImage" src="sakoon-assets/dashboard.webp" alt="Sakoon dashboard">
-          </div>
-          <div class="gallery-caption">
-            <div>
-              <strong id="galleryTitle">Dashboard and astrolabe dial</strong>
-              <p id="galleryText">Next azaan countdown, daily windows, snooze controls, and current timing-source status.</p>
-            </div>
-            <a class="button compact secondary" href="https://github.com/arkenapps/Sakoon" target="_blank" rel="noopener">Open GitHub</a>
-          </div>
-          <div class="gallery-thumbs" aria-label="Screenshot selector">
-            <button class="thumb active" data-image="dashboard" data-title="Dashboard and astrolabe dial" data-text="Next azaan countdown, daily windows, snooze controls, and current timing-source status."><img src="sakoon-assets/dashboard.webp" alt="Dashboard thumbnail"></button>
-            <button class="thumb" data-image="sources" data-title="Official timing sources" data-text="Upload official CSV or Excel tables, retain versions, and clearly separate official data from fallback calculations."><img src="sakoon-assets/sources.webp" alt="Sources thumbnail"></button>
-            <button class="thumb" data-image="verify" data-title="Official versus calculated" data-text="A verification view designed to reveal suspicious deltas, shifted columns, or corrupted source files."><img src="sakoon-assets/verify.webp" alt="Verify thumbnail"></button>
-            <button class="thumb" data-image="settings" data-title="Audio and regional settings" data-text="Region, mute lead-in, per-prayer windows, Friday Jumu’ah duration, startup, fallback, and theme controls."><img src="sakoon-assets/settings.webp" alt="Settings thumbnail"></button>
-            <button class="thumb" data-image="tray" data-title="Fast tray controls" data-text="Open the Sakoon window, snooze for meetings, test the mute cycle, cancel snooze, or quit Sakoon."><img src="sakoon-assets/tray.webp" alt="Tray thumbnail"></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Built for real Windows behaviour</div>
-          <h2>The difficult part is not muting. It is restoring safely.</h2>
-          <p>
-            Sakoon treats audio management as a recovery problem, not a simple
-            mute toggle.
-          </p>
-        </div>
-
-        <div class="rule-grid">
-          <article class="card rule-card"><div class="number">01</div><h3>Mute, never re-level</h3><p>The output device is muted; your volume stays where you set it.</p></article>
-          <article class="card rule-card"><div class="number">02</div><h3>Capture, never toggle</h3><p>The previous mute and volume state is preserved.</p></article>
-          <article class="card rule-card"><div class="number">03</div><h3>Recovery first</h3><p>Restore information is written before audio is changed.</p></article>
-          <article class="card rule-card"><div class="number">04</div><h3>No stale replay</h3><p>A missed window is not intentionally replayed after wake.</p></article>
-          <article class="card rule-card"><div class="number">05</div><h3>The user always wins</h3><p>Manual unmute or override causes Sakoon to stand down.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="privacy">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Local-first by design</div>
-          <h2>Nothing needs to leave your machine.</h2>
-          <p>
-            Sakoon's core operation does not depend on a cloud account,
-            advertising network, analytics service, or remote prayer-time API.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="card feature-card"><div class="icon-chip">⌂</div><h3>Native app window</h3><p>The interface renders inside the app itself — no network ports are opened.</p></article>
-          <article class="card feature-card"><div class="icon-chip">×</div><h3>No account</h3><p>No registration, login, profile, or identity is required.</p></article>
-          <article class="card feature-card"><div class="icon-chip">○</div><h3>No telemetry</h3><p>No behavioural analytics or background tracking.</p></article>
-          <article class="card feature-card"><div class="icon-chip">▣</div><h3>Readable local files</h3><p>Timing files and settings remain under the user's control.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Regional presets</div>
-          <h2>Designed for local authority differences.</h2>
-          <p>
-            Presets make configuration easier, but uploaded official tables
-            remain the preferred source whenever available.
-          </p>
-        </div>
-        <div class="region-cloud">
-          <span>Dubai</span><span>Abu Dhabi</span><span>Sharjah</span>
-          <span>Riyadh</span><span>Jeddah</span><span>Doha</span>
-          <span>Kuwait</span><span>Manama</span><span>Muscat</span>
-          <span>Cairo</span><span>Amman</span><span>Beirut</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="download">
-      <div class="wrap">
-        <div class="download-panel">
-          <div class="download-grid">
-            <div>
-              <div class="eyebrow">Available now</div>
-              <h2>Bring a little stillness to your Windows PC.</h2>
-              <p>
-                Download Sakoon.exe from the ArkenApps GitHub repository and
-                run it. One self-contained file — no installer, no account,
-                and no administrator rights are required for normal use.
-              </p>
-              <div class="download-meta">
-                <span>Version 2.0.0</span>
-                <span>Windows</span>
-                <span>Free for personal use</span>
-                <span>Single file · SHA-256 checksum supplied</span>
-              </div>
-            </div>
-            <a class="button brass" href="https://github.com/arkenapps/Sakoon/releases/latest/download/Sakoon.exe">Download Sakoon.exe</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">Questions</div>
-          <h2>Clear answers, without pretending software is infallible.</h2>
-        </div>
-        <div class="faq">
-          <details>
-            <summary>Is Sakoon a religious authority?</summary>
-            <p>No. Sakoon is a convenience utility. The relevant awqaf authority and local mosque always take precedence, and Sakoon should never be the only prayer reminder.</p>
-          </details>
-          <details>
-            <summary>Does Sakoon fetch prayer times from the internet?</summary>
-            <p>Its preferred source is an official monthly CSV or Excel table uploaded by the user. Its astronomical fallback runs locally and is clearly identified as unofficial.</p>
-          </details>
-          <details>
-            <summary>Can it leave my PC permanently muted?</summary>
-            <p>The application is designed to store recovery state before changing audio and to restore orphaned state after restart. Hardware and drivers can still fail, so reproducible restoration problems should be reported.</p>
-          </details>
-          <details>
-            <summary>Does Sakoon open a browser or a local web server?</summary>
-            <p>No. From version 2.0.0 the interface renders in its own application window and Sakoon opens no network ports at all. The window uses Microsoft Edge WebView2, which ships with Windows 11 and current Windows 10; on the rare machine without it, Windows offers a one-time free install on first launch.</p>
-          </details>
-          <details>
-            <summary>What happens when I close the window?</summary>
-            <p>Sakoon returns to the system tray and keeps guarding your audio. Use Quit in the tray menu to exit completely, which also restores your audio on the way out.</p>
-          </details>
-          <details>
-            <summary>Does it need administrator access?</summary>
-            <p>Normal use and the visible Windows Startup shortcut do not require administrator rights.</p>
-          </details>
-          <details>
-            <summary>Is the source code public?</summary>
-            <p>No. The GitHub repository is public for documentation, issue tracking, release notes, and official binary distribution. The Go source code is not published.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="disclaimer">
-          <h3>Important timing notice</h3>
-          <p>
-            Sakoon is not a religious authority and cannot certify a prayer
-            time. Official awqaf publications and your local mosque override
-            every imported, displayed, or calculated value. Software can fail;
-            never rely on Sakoon as your only prayer reminder.
-          </p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-grid">
+  <section class="hero">
+    <div class="hero-glyph" aria-hidden="true">سكون</div>
+    <div class="wrap hero-grid">
       <div>
-        <strong style="color:#EAF5F7">ArkenApps</strong><br>
-        Designed by Arkenstone · Local-first software · No tracking
+        <div class="eyebrow">Free Windows desktop app · v2.0.0</div>
+        <h1>Your PC can observe the <span>azaan</span> too.<em>سكون</em></h1>
+        <p class="lede">
+          Sakoon mutes system audio before each azaan, keeps the computer quiet
+          through the configured window, and restores exactly what it found —
+          without accounts, ads, telemetry, or any cloud dependency.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/arkenapps/Sakoon/releases/latest">Download</a>
+          <a class="button ghost" href="#how">How it works</a>
+          <a class="button ghost" href="#screens">See the app</a>
+        </div>
+        <p class="micro">Windows 10 and 11 · One self-contained file · No admin rights · Source code remains private</p>
       </div>
-      <div>
-        <a href="https://github.com/arkenapps/Sakoon">GitHub</a>
-        &nbsp;·&nbsp;
-        <a href="https://github.com/arkenapps/Sakoon/releases/latest">Releases</a>
-        &nbsp;·&nbsp;
-        <a href="https://arkenapps.com/">ArkenApps.com</a>
+
+      <div class="dial-frame">
+        <svg class="dial" viewBox="0 0 420 420" role="img" aria-label="Twenty-four hour prayer dial">
+          <circle class="ring" cx="210" cy="210" r="172"/>
+          <circle class="ring" cx="210" cy="210" r="138"/>
+          <circle class="ring" cx="210" cy="210" r="96" style="stroke:var(--line-soft)"/>
+          <path class="arc" d="M 96 296 A 138 138 0 0 1 324 296"/>
+          <g class="tick">
+            <line x1="210" y1="38" x2="210" y2="50"/>
+            <line x1="382" y1="210" x2="370" y2="210"/>
+            <line x1="210" y1="382" x2="210" y2="370"/>
+            <line x1="38" y1="210" x2="50" y2="210"/>
+            <line x1="331" y1="89" x2="323" y2="97"/>
+            <line x1="331" y1="331" x2="323" y2="323"/>
+            <line x1="89" y1="331" x2="97" y2="323"/>
+            <line x1="89" y1="89" x2="97" y2="97"/>
+          </g>
+          <g class="hand">
+            <line x1="210" y1="210" x2="210" y2="82" stroke="#C9A45C" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+            <circle cx="210" cy="82" r="3.4" fill="#C9A45C"/>
+          </g>
+          <circle class="node" cx="103" cy="286" r="5"/>
+          <text class="lbl" x="52" y="306">FAJR</text>
+          <circle class="node on" cx="210" cy="72" r="6"/>
+          <text class="lbl on" x="186" y="58">DHUHR</text>
+          <circle class="node" cx="317" cy="286" r="5"/>
+          <text class="lbl" x="332" y="306">ASR</text>
+          <circle class="node" cx="286" cy="317" r="5"/>
+          <text class="lbl" x="302" y="340">MAGHRIB</text>
+          <circle class="node" cx="248" cy="337" r="5"/>
+          <text class="lbl" x="240" y="364">ISHA</text>
+          <circle cx="210" cy="210" r="3" fill="#4FD8EB"/>
+        </svg>
+        <div class="dial-core">
+          <div class="k">NEXT AZAAN</div>
+          <div class="v">DHUHR</div>
+          <div class="t">00:07:43</div>
+          <div class="s">azaan at 12:27</div>
+        </div>
       </div>
-      <div class="dua">A du'a for those who built it is more than enough.</div>
     </div>
-  </footer>
 
-  <script>
-    (() => {
-      const image = document.getElementById('galleryImage');
-      const title = document.getElementById('galleryTitle');
-      const text = document.getElementById('galleryText');
-      const thumbs = [...document.querySelectorAll('.thumb')];
+    <div class="wrap">
+      <div class="trust rv">
+        <div><strong>Official tables first</strong><span>CSV and Excel uploads</span></div>
+        <div><strong>Your volume untouched</strong><span>It mutes; it never moves the slider</span></div>
+        <div><strong>Crash-aware recovery</strong><span>Protects the previous audio state</span></div>
+        <div><strong>100% local</strong><span>No open network ports</span></div>
+        <div><strong>No telemetry</strong><span>No account, ads, or tracking</span></div>
+      </div>
+    </div>
+  </section>
 
-      thumbs.forEach(button => {
-        button.addEventListener('click', () => {
-          thumbs.forEach(item => item.classList.remove('active'));
-          button.classList.add('active');
-          const key = button.dataset.image;
-          image.src = `sakoon-assets/${key}.webp`;
-          image.alt = button.dataset.title;
-          title.textContent = button.dataset.title;
-          text.textContent = button.dataset.text;
-        });
-      });
-    })();
-  </script>
+  <section id="how">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">The mall moment</div>
+        <h2>A small courtesy, made automatic.</h2>
+        <p>In many GCC malls, music stops when the azaan begins. Sakoon brings that same moment of stillness to the Windows desktop.</p>
+      </div>
+
+      <div class="story rv">
+        <div class="quote">“The building itself observes the moment. Sakoon lets your computer do the same.”</div>
+        <div>
+          <p>You may be working with music playing, watching a video, or using an application when the azaan begins. Instead of reaching for the volume key five times a day, Sakoon handles the audio window for you and hands it straight back.</p>
+          <p><strong>It does not play the azaan and it does not replace a prayer reminder.</strong> It simply manages your PC audio around the timing source you have selected.</p>
+          <p>The name means <strong>stillness</strong>. That is the entire idea: mute, pause, restore, and get out of the way.</p>
+        </div>
+      </div>
+
+      <div class="rail rv" style="margin-top:44px">
+        <div><div class="ar">الفجر</div><div class="en">FAJR</div><div class="no">dawn</div></div>
+        <div><div class="ar">الظهر</div><div class="en">DHUHR</div><div class="no">Jumuʿah aware</div></div>
+        <div><div class="ar">العصر</div><div class="en">ASR</div><div class="no">afternoon</div></div>
+        <div><div class="ar">المغرب</div><div class="en">MAGHRIB</div><div class="no">sunset</div></div>
+        <div><div class="ar">العشاء</div><div class="en">ISHA</div><div class="no">night</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Timing philosophy</div>
+        <h2>Official authority first. Astronomy as a watchdog.</h2>
+        <p>Prayer times vary by authority, region, method, and deliberate precaution offsets. Sakoon keeps those two responsibilities separate rather than blending them.</p>
+      </div>
+      <div class="grid-2 rv">
+        <article class="card src official">
+          <span class="tag">PREFERRED</span>
+          <h3>Official uploaded tables</h3>
+          <p>The monthly CSV or Excel table published by the relevant authority is treated as the source of truth.</p>
+          <ul>
+            <li>Versioned on every upload — nothing is overwritten</li>
+            <li>Checksummed, with visible provenance</li>
+            <li>Strict parsing; a suspicious file is rejected, not guessed at</li>
+            <li>Arabic column headers recognised</li>
+          </ul>
+        </article>
+        <article class="card src calc">
+          <span class="tag">CALCULATED — UNOFFICIAL</span>
+          <h3>Local astronomical fallback</h3>
+          <p>Solar calculation runs entirely on the machine and is always labelled unofficial, because it cannot reproduce an authority's precaution offsets.</p>
+          <ul>
+            <li>Used only when no official table is present</li>
+            <li>Powers the Verify view's official-versus-calculated delta</li>
+            <li>A small, stable delta is healthy; a sudden jump means a bad import</li>
+            <li>Never presented as authoritative</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Inside the app</div>
+        <h2>An interface built for a glance, not a manual.</h2>
+        <p>Four themes ship with the app — Night, Pearl, Oasis, and Amber — and every value Sakoon acts on stays visible on screen.</p>
+      </div>
+      <div class="shot rv">
+        <img id="galleryImage" src="sakoon-assets/dashboard.webp" alt="Sakoon dashboard showing the astrolabe dial and prayer schedule">
+        <div class="shot-meta">
+          <strong id="galleryTitle">Dashboard and astrolabe dial</strong>
+          <p id="galleryText">Next azaan countdown, daily windows, snooze controls, and current timing-source status.</p>
+        </div>
+      </div>
+      <div class="thumbs rv">
+        <button class="thumb active" data-image="dashboard" data-title="Dashboard and astrolabe dial" data-text="Next azaan countdown, daily windows, snooze controls, and current timing-source status."><img src="sakoon-assets/dashboard.webp" alt="Dashboard thumbnail"></button>
+        <button class="thumb" data-image="sources" data-title="Official timing sources" data-text="Upload, version, and inspect the official monthly tables the app schedules from."><img src="sakoon-assets/sources.webp" alt="Sources thumbnail"></button>
+        <button class="thumb" data-image="verify" data-title="Official versus calculated" data-text="Per-day delta between the uploaded table and local astronomy, so a shifted column cannot hide."><img src="sakoon-assets/verify.webp" alt="Verify thumbnail"></button>
+        <button class="thumb" data-image="settings" data-title="Settings" data-text="Region, mute lead-in, per-prayer windows, Friday Jumu’ah duration, startup, fallback, and theme controls."><img src="sakoon-assets/settings.webp" alt="Settings thumbnail"></button>
+        <button class="thumb" data-image="tray" data-title="Fast tray controls" data-text="Open the Sakoon window, snooze for meetings, test the mute cycle, cancel snooze, or quit Sakoon."><img src="sakoon-assets/tray.webp" alt="Tray thumbnail"></button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Built for real Windows behaviour</div>
+        <h2>Audio is treated as a recovery problem.</h2>
+        <p>The failure that matters most for an audio utility is leaving a computer unexpectedly silent. Five rules exist to prevent it.</p>
+      </div>
+      <div class="grid-5 rv">
+        <article class="card rule"><div class="n">01</div><h3>Mute, never re-level</h3><p>The output device is muted; your volume stays where you set it.</p></article>
+        <article class="card rule"><div class="n">02</div><h3>Capture, never toggle</h3><p>The previous mute and volume state is preserved.</p></article>
+        <article class="card rule"><div class="n">03</div><h3>Recovery first</h3><p>Restore information is written before audio is changed.</p></article>
+        <article class="card rule"><div class="n">04</div><h3>No stale replay</h3><p>A missed window is not intentionally replayed after wake.</p></article>
+        <article class="card rule"><div class="n">05</div><h3>The user always wins</h3><p>Manual unmute or override causes Sakoon to stand down.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Local-first by design</div>
+        <h2>Nothing needs to leave your machine.</h2>
+        <p>Sakoon's core operation does not depend on a cloud account, advertising network, analytics service, or remote prayer-time API.</p>
+      </div>
+      <div class="grid-4 rv">
+        <article class="card"><h3>Native app window</h3><p>The interface renders inside the app itself — no network ports are opened.</p></article>
+        <article class="card"><h3>No account</h3><p>No registration, login, profile, or identity is required.</p></article>
+        <article class="card"><h3>No telemetry</h3><p>No behavioural analytics or background tracking.</p></article>
+        <article class="card"><h3>Readable local files</h3><p>Timing files and settings stay under your control, in plain text.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Regional presets</div>
+        <h2>Designed for local authority differences.</h2>
+        <p>Presets make configuration easier, but an uploaded official table remains the preferred source whenever one is available.</p>
+      </div>
+      <div class="regions rv">
+        <span>Dubai</span><span>Abu Dhabi</span><span>Sharjah</span>
+        <span>Riyadh</span><span>Jeddah</span><span>Doha</span>
+        <span>Kuwait</span><span>Manama</span><span>Muscat</span>
+        <span>Cairo</span><span>Amman</span><span>Beirut</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <div class="wrap">
+      <div class="dl rv">
+        <div>
+          <div class="eyebrow">Available now</div>
+          <h2>Bring a little stillness to your Windows PC.</h2>
+          <p>Get the latest release from the ArkenApps GitHub repository. One self-contained application — no installer, no account, and no administrator rights for normal use.</p>
+          <div class="dl-meta">
+            <span>v2.0.0</span><span>Windows 10 / 11</span><span>Single file</span>
+            <span>Free for personal use</span><span>SHA-256 published</span>
+          </div>
+        </div>
+        <a class="button brass" href="https://github.com/arkenapps/Sakoon/releases/latest">Download</a>
+      </div>
+
+      <div class="notice rv">
+        <h3>The first time you run it, Windows will warn you</h3>
+        <p>Sakoon is not code-signed — a signing certificate is an annual cost this project has not taken on. Windows therefore shows <em>“Windows protected your PC”</em> for any application it has not seen before. That warning is about reputation, not about anything detected in the file.</p>
+        <p>To continue: click <strong>More info</strong>, then <strong>Run anyway</strong>. The prompt stops appearing once Windows has seen the application a few times.</p>
+        <p>If you would rather verify before trusting it: every release publishes <code>SHA256SUMS.txt</code>. Compare it against <code>Get-FileHash Sakoon.exe</code> in PowerShell, and only ever download from the official <code>arkenapps/Sakoon</code> release page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Questions</div>
+        <h2>Clear answers, without pretending software is infallible.</h2>
+      </div>
+      <div class="rv">
+        <details><summary>Is Sakoon a religious authority?</summary><p>No. Sakoon is a convenience utility. The relevant awqaf authority and local mosque always take precedence, and Sakoon should never be the only prayer reminder.</p></details>
+        <details><summary>Does Sakoon fetch prayer times from the internet?</summary><p>Its preferred source is an official monthly CSV or Excel table uploaded by you. Its astronomical fallback runs locally and is clearly identified as unofficial.</p></details>
+        <details><summary>Does it open a browser or a local web server?</summary><p>No. From version 2.0.0 the interface renders in its own application window and Sakoon opens no network ports at all. The window uses Microsoft Edge WebView2, which ships with Windows 11 and current Windows 10; on the rare machine without it, Windows offers a one-time free install on first launch.</p></details>
+        <details><summary>What happens when I close the window?</summary><p>Sakoon returns to the system tray and keeps guarding your audio. Use Quit in the tray menu to exit completely, which also restores your audio on the way out.</p></details>
+        <details><summary>Why does Windows say the app is unrecognised?</summary><p>Because it is unsigned and new. SmartScreen flags anything without an established reputation. Choose More info, then Run anyway, and verify the published SHA-256 hash if you want certainty about the file you downloaded.</p></details>
+        <details><summary>Can it leave my PC permanently muted?</summary><p>Recovery state is written before audio is changed, and orphaned state is restored on the next start. Hardware and drivers can still fail, so reproducible restoration problems should be reported.</p></details>
+        <details><summary>Does it need administrator access?</summary><p>No. Normal use and the visible Windows Startup shortcut both stay inside your own user profile.</p></details>
+        <details><summary>Is the source code public?</summary><p>No. The GitHub repository is public for documentation, issue tracking, release notes, and official binary distribution. The Go source code is not published.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="disclaimer rv">
+        <h3>Important timing notice</h3>
+        <p>Sakoon is not a religious authority and cannot certify a prayer time. Official awqaf publications and your local mosque override every imported, displayed, or calculated value. Software can fail; never rely on Sakoon as your only prayer reminder.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><strong style="color:var(--text)">ArkenApps</strong><br>Designed by Arkenstone · Local-first software · No tracking</div>
+    <div>
+      <a href="https://github.com/arkenapps/Sakoon">GitHub</a> ·
+      <a href="https://github.com/arkenapps/Sakoon/releases/latest">Releases</a> ·
+      <a href="https://arkenapps.com/">ArkenApps.com</a>
+    </div>
+    <div class="dua">A du'a for those who built it is more than enough.</div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const header = document.getElementById('siteHeader');
+  const onScroll = () => header.classList.toggle('stuck', window.scrollY > 12);
+  onScroll();
+  addEventListener('scroll', onScroll, {passive:true});
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.06});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  const image = document.getElementById('galleryImage');
+  const title = document.getElementById('galleryTitle');
+  const text  = document.getElementById('galleryText');
+  document.querySelectorAll('.thumb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      image.src = `sakoon-assets/${btn.dataset.image}.webp`;
+      image.alt = btn.dataset.title;
+      title.textContent = btn.dataset.title;
+      text.textContent  = btn.dataset.text;
+    });
+  });
+})();
+</script>
 </body>
 </html>

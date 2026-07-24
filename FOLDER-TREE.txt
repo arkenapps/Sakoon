@@ -36,6 +36,7 @@ Sakoon/
 └── publish.bat
 └── release-assets/
   └── PUT-Sakoon.exe-HERE.txt
+  └── README-FIRST.txt
   └── Sakoon-Table-Format-Example-NOT-OFFICIAL.csv
 └── releases/
   └── v1.0.0.md

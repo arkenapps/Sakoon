@@ -26,8 +26,8 @@
   },
   {
     "path": ".gitignore",
-    "bytes": 600,
-    "sha256": "10db2df8d5ac1a01f78a4f81e2e94f885f8b807aff555c505fe160f124fca470"
+    "bytes": 708,
+    "sha256": "dec5b1bf14d9b1e01588c1be85dee77939a6ce9f820c938b6fb9f7e5211bf2c0"
   },
   {
     "path": "CHANGELOG.md",
@@ -56,8 +56,8 @@
   },
   {
     "path": "FOLDER-TREE.txt",
-    "bytes": 1335,
-    "sha256": "ab72c53e5e13c2f6022a07b465228dc03544ee6e5386eb1b1088d0b0c6053b76"
+    "bytes": 1364,
+    "sha256": "aa605b96ecc4fa740a8cf88721323f6a53742e217c3aefbc347ef511790d2ac7"
   },
   {
     "path": "LICENSE.txt",
@@ -66,8 +66,8 @@
   },
   {
     "path": "PUBLISH-V2-UPDATE.bat",
-    "bytes": 12809,
-    "sha256": "c64ae5b795ac4ac952bc5a92a8cb194c3b9ed1201bb851fe7341a7fdc494d9cd"
+    "bytes": 14293,
+    "sha256": "46f7ba83b71b96b05542dfe665eb17ba595ec4ccdd2b8c8db80246eea73676c2"
   },
   {
     "path": "PUBLISH-WEBSITE-UPDATE.bat",
@@ -81,8 +81,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 9333,
-    "sha256": "ef1d5aad2f7f198096ffd556e7cc5bddd4de8f8a02f76444cced4e26f96bb531"
+    "bytes": 9697,
+    "sha256": "58c1fe9154a3ee2c90ae0abee2b12d8b6bcef173a002fcbd9c9a96ea367a3d0e"
   },
   {
     "path": "REPOSITORY-CHECKLIST.md",
@@ -206,8 +206,8 @@
   },
   {
     "path": "docs/404.html",
-    "bytes": 34916,
-    "sha256": "bf7622b3f777d933fb16c2640e61776d6012d9ec9eed997b33a385d4bf731716"
+    "bytes": 19385,
+    "sha256": "db12aef4529ede15c8d45d2d1ca0a3b4550b5e36c07c8758e37ec346be492f05"
   },
   {
     "path": "docs/about.md",
@@ -216,8 +216,8 @@
   },
   {
     "path": "docs/index.html",
-    "bytes": 34931,
-    "sha256": "f8b09355e337bfabfcca16ea77c144df971d832ee3b33d228c9daa3fe7f1d00a"
+    "bytes": 34060,
+    "sha256": "269ba115f084bbd873da519d69f61a3a61e8928b0cf098e95bdcf36e85e98df1"
   },
   {
     "path": "docs/privacy.md",
@@ -305,6 +305,11 @@
     "sha256": "fae58da0bddc159824294d1b78fc2e17a1b90cdbf16f7b98919494360aefb227"
   },
   {
+    "path": "release-assets/README-FIRST.txt",
+    "bytes": 2610,
+    "sha256": "e0d2908074fd7e4ebf6d88bc372264c428324e2b77495d74cadcc81c5f2bb64c"
+  },
+  {
     "path": "release-assets/Sakoon-Table-Format-Example-NOT-OFFICIAL.csv",
     "bytes": 135,
     "sha256": "aead7075a130fc320652104fbc4c50d3222561c15d91f61da383ecd77f0f84df"
@@ -316,8 +321,8 @@
   },
   {
     "path": "releases/v2.0.0.md",
-    "bytes": 3755,
-    "sha256": "28f65690cfa58b74a6f7329ae9c0e20902cb6dcba204d57d955a2cb519e8ecce"
+    "bytes": 4373,
+    "sha256": "780e2f0ba80b41c6385c07ada86d536c7a7b7051bd9ff2c3df50d3e5a537e3f8"
   },
   {
     "path": "samples/README.md",
