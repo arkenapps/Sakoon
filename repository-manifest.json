@@ -1,0 +1,337 @@
+[
+  {
+    "path": ".gitattributes",
+    "bytes": 125,
+    "sha256": "be369b2fc8d65789db492cb5ef1e991be9ef0172ea4c1ac02f9b5e8c94383502"
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+    "bytes": 3079,
+    "sha256": "382274685aec3db1339286b8eb3d54042b2ee7b2fe0c5978c1114f9dffe8fb93"
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/config.yml",
+    "bytes": 286,
+    "sha256": "92207248766489be0afb51ee31f015202fb95ee9d875d94c2acfb588e9a9b63d"
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/region_table_request.yml",
+    "bytes": 2233,
+    "sha256": "75da06052f255b1e43e789665eca21c78a4c65dd2340485cb5930adda7bc80a2"
+  },
+  {
+    "path": ".github/PULL_REQUEST_TEMPLATE.md",
+    "bytes": 499,
+    "sha256": "7db6af2b81d4b459afd8efc6394d1d31dfcae606f242faa614d0e203697442b3"
+  },
+  {
+    "path": ".gitignore",
+    "bytes": 600,
+    "sha256": "10db2df8d5ac1a01f78a4f81e2e94f885f8b807aff555c505fe160f124fca470"
+  },
+  {
+    "path": "CHANGELOG.md",
+    "bytes": 1976,
+    "sha256": "a54f168316f73d9d4a63ebcf50f5cb1cefdc9cbaf1edc48d0fd43e9dbc75e07d"
+  },
+  {
+    "path": "CODE_OF_CONDUCT.md",
+    "bytes": 1721,
+    "sha256": "913aeeadc08f20d2c1336809adc432203af746456ba207705ef0dcbf96b4c5e0"
+  },
+  {
+    "path": "CONTRIBUTING.md",
+    "bytes": 3394,
+    "sha256": "a18f44cfd7a69dda76a0603374502e9421a246d82f33fdf19abd6d2837c42e83"
+  },
+  {
+    "path": "COPY-INSTRUCTIONS.txt",
+    "bytes": 709,
+    "sha256": "0ccf774cc0bc9f1a327b453f55c8759a3c052d3e6da84beb19faa86e1afa1499"
+  },
+  {
+    "path": "ENABLE-SAKOON-GITHUB-PAGES.bat",
+    "bytes": 3032,
+    "sha256": "3f4f0bb61ce8d348cfaea5562bdcea4834ab592aabf273bb8e12e4f98ce67c4b"
+  },
+  {
+    "path": "FOLDER-TREE.txt",
+    "bytes": 1335,
+    "sha256": "ab72c53e5e13c2f6022a07b465228dc03544ee6e5386eb1b1088d0b0c6053b76"
+  },
+  {
+    "path": "LICENSE.txt",
+    "bytes": 4367,
+    "sha256": "b54979e7208f05762054d80880f0e266dab718b79c41d71d594e2f69164c07a2"
+  },
+  {
+    "path": "PUBLISH-V2-UPDATE.bat",
+    "bytes": 12809,
+    "sha256": "c64ae5b795ac4ac952bc5a92a8cb194c3b9ed1201bb851fe7341a7fdc494d9cd"
+  },
+  {
+    "path": "PUBLISH-WEBSITE-UPDATE.bat",
+    "bytes": 3484,
+    "sha256": "b309fc9f0d7226ddf87d93b1dcbfd087f8811553e478a525cb0a50c2d99acab3"
+  },
+  {
+    "path": "PUBLISHING.md",
+    "bytes": 5987,
+    "sha256": "10ef7b5ce78dcc871f26b2b0e072a95d33630119cbbc58238b573e0e268845a8"
+  },
+  {
+    "path": "README.md",
+    "bytes": 9333,
+    "sha256": "ef1d5aad2f7f198096ffd556e7cc5bddd4de8f8a02f76444cced4e26f96bb531"
+  },
+  {
+    "path": "REPOSITORY-CHECKLIST.md",
+    "bytes": 1011,
+    "sha256": "0a204c8d7e4622240855e5a43a5863cf51fb0122e69dc66b3bd69c5692b47374"
+  },
+  {
+    "path": "SECURITY.md",
+    "bytes": 2407,
+    "sha256": "87b5cd8c4e89322845a3009b2e3dc6a6c9900a8791fd48f2d4d990588af1996c"
+  },
+  {
+    "path": "START-HERE.bat",
+    "bytes": 5344,
+    "sha256": "bbabf8b8ae10198184f118c4ecd00d786eaafb5b81a55c7c28bdbf77d2eaf48b"
+  },
+  {
+    "path": "SUPPORT.md",
+    "bytes": 878,
+    "sha256": "9b2360aafedbd219b53390c7b0c12a09b75b3580d4105c675d7746c6ff1211f3"
+  },
+  {
+    "path": "WEBSITE-PUBLISHING.md",
+    "bytes": 898,
+    "sha256": "d80ad798d5f9a554ca69af6193611af112a55b918c63b9ae76589a0a992c386b"
+  },
+  {
+    "path": "assets/Screenshot_1.png",
+    "bytes": 140324,
+    "sha256": "d6de1f7fb2e7e150d588feea35dc450e83f0f06b54d35c6767bd703a952cefbd"
+  },
+  {
+    "path": "assets/Screenshot_2.png",
+    "bytes": 134078,
+    "sha256": "1a85066549f180e78ba181cbc228f7b2068255f56f78d9cfcc56caa06e1566d7"
+  },
+  {
+    "path": "assets/Screenshot_3.png",
+    "bytes": 149943,
+    "sha256": "7f9ef39a2cf3669d4d74ab87e94222dfc7f4465a77be2911c1b724e24e6c76c4"
+  },
+  {
+    "path": "assets/Screenshot_4.png",
+    "bytes": 23568,
+    "sha256": "fec1eac475424f5b8b8d64c4108481ff55c2b16bc28a01ccf7fe549187123ace"
+  },
+  {
+    "path": "assets/brand/sakoon-icon-1024.png",
+    "bytes": 139483,
+    "sha256": "aac0cacabcb262fd1cc51fd1347727a5e6f9e437e98aba4517c0a264e29d126b"
+  },
+  {
+    "path": "assets/brand/sakoon-icon-256.png",
+    "bytes": 29843,
+    "sha256": "57e0ee716a44ec607d05346710526ecb64e4462b1f6f9a9b80752b1ef894127d"
+  },
+  {
+    "path": "assets/brand/sakoon.ico",
+    "bytes": 55021,
+    "sha256": "37794d3707b30de57529ed2b4916ac53971b9fdf3e39c1eb0fc947732f71260f"
+  },
+  {
+    "path": "assets/dashboard.png",
+    "bytes": 190233,
+    "sha256": "392756fdf2ce0e30d8c669905a0c2d0e7a37d787ae213404ab41ee616768ec87"
+  },
+  {
+    "path": "assets/screenshots/README.md",
+    "bytes": 570,
+    "sha256": "ba48fc15db3ab001079bd368871807ad73ae288fccecc155f3ac6b8fb9447ca3"
+  },
+  {
+    "path": "assets/screenshots/dashboard-placeholder.svg",
+    "bytes": 1615,
+    "sha256": "32c785769d168e75cc5600cd08169bba9530b2747f9585d59b66c187cf238acb"
+  },
+  {
+    "path": "assets/screenshots/dashboard.png",
+    "bytes": 286524,
+    "sha256": "8ccbea0f840a2eed61375170fa21b6333f6e213fe469c6b6fdfa293f5f01f88a"
+  },
+  {
+    "path": "assets/screenshots/settings.png",
+    "bytes": 280809,
+    "sha256": "a03dc3456752398816100db6309eb7311458e8a10caf107635a6decfea5a8806"
+  },
+  {
+    "path": "assets/screenshots/sources.png",
+    "bytes": 251575,
+    "sha256": "8e666c6f9392bee734ac9071653362f58271bf4d8f41aef89e5e1874c69fa67f"
+  },
+  {
+    "path": "assets/screenshots/themes-placeholder.svg",
+    "bytes": 1611,
+    "sha256": "582c372313c77a2cfa7e1b6fad2f3e200d27d9db9c57c72ee9aa47819b124b91"
+  },
+  {
+    "path": "assets/screenshots/tray-placeholder.svg",
+    "bytes": 1580,
+    "sha256": "341708ee6ea3d49c86c36dee7f4605db42bb7e949c90ee848de46621014a7eaf"
+  },
+  {
+    "path": "assets/screenshots/tray.png",
+    "bytes": 21680,
+    "sha256": "04f7a1848fe5d1f0e78f6e376218b775a439f2030ed1ed6a342714731d17d6cd"
+  },
+  {
+    "path": "assets/screenshots/verify-placeholder.svg",
+    "bytes": 1624,
+    "sha256": "bea45efa37012fccc6b51389501d8ec9c216abb2c869657065d317694486d0b5"
+  },
+  {
+    "path": "assets/screenshots/verify.png",
+    "bytes": 221389,
+    "sha256": "c179d13af8f8df92f01c0572194bf16422993ccb72902f982533295e5d3a11a6"
+  },
+  {
+    "path": "docs/.nojekyll",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/404.html",
+    "bytes": 34916,
+    "sha256": "bf7622b3f777d933fb16c2640e61776d6012d9ec9eed997b33a385d4bf731716"
+  },
+  {
+    "path": "docs/about.md",
+    "bytes": 7014,
+    "sha256": "1b9ea9fa9cb694251354e8377a7df8d14764b054f001e909c59ae88d5967c026"
+  },
+  {
+    "path": "docs/index.html",
+    "bytes": 34931,
+    "sha256": "f8b09355e337bfabfcca16ea77c144df971d832ee3b33d228c9daa3fe7f1d00a"
+  },
+  {
+    "path": "docs/privacy.md",
+    "bytes": 1990,
+    "sha256": "959ca6b395bbe1564633c9496c5bb63c651d3e9eb6f3e4b0edd7022cb1197ae7"
+  },
+  {
+    "path": "docs/sakoon-assets/apple-touch-icon.png",
+    "bytes": 19152,
+    "sha256": "77cd3da4cef0a458a2775ca2fefd6b3876aeed2a65a9fb6f58fef4674fe46b3d"
+  },
+  {
+    "path": "docs/sakoon-assets/dashboard.webp",
+    "bytes": 43694,
+    "sha256": "2b297fcafc7ca37359963583ebdd84f53cee941528f9c8ddf8275cdca274aa06"
+  },
+  {
+    "path": "docs/sakoon-assets/favicon-32.png",
+    "bytes": 2062,
+    "sha256": "8f63ce00c349af907d3501f16eb0e886564ac3cf44e6e728a6838faf341031c4"
+  },
+  {
+    "path": "docs/sakoon-assets/favicon.ico",
+    "bytes": 6448,
+    "sha256": "2f31c75a0536239ce96df983257b9db28b4d7b42150f95cb6fc73b9a4fe40425"
+  },
+  {
+    "path": "docs/sakoon-assets/icon-512.png",
+    "bytes": 66317,
+    "sha256": "4a34b157054a3d170257072c8f015a6761e5234c9b66e7de1f2087e2f0302c57"
+  },
+  {
+    "path": "docs/sakoon-assets/og-sakoon.png",
+    "bytes": 114901,
+    "sha256": "a26cfbb6a244e12a0bea15b614f1b0ab96c00f5b58c8d728a48256ca714335e6"
+  },
+  {
+    "path": "docs/sakoon-assets/sakoon-icon-1024.png",
+    "bytes": 139483,
+    "sha256": "aac0cacabcb262fd1cc51fd1347727a5e6f9e437e98aba4517c0a264e29d126b"
+  },
+  {
+    "path": "docs/sakoon-assets/sakoon-icon-256.png",
+    "bytes": 29843,
+    "sha256": "57e0ee716a44ec607d05346710526ecb64e4462b1f6f9a9b80752b1ef894127d"
+  },
+  {
+    "path": "docs/sakoon-assets/settings.webp",
+    "bytes": 47086,
+    "sha256": "3afda718ae69b74686f1be366d547b4f513ec6ac1c5fd70082f02a5ba6afabf1"
+  },
+  {
+    "path": "docs/sakoon-assets/sources.webp",
+    "bytes": 40586,
+    "sha256": "a660572d73199b7b0fb6200b6b18576bd24e624158d9a460a485387b842155d3"
+  },
+  {
+    "path": "docs/sakoon-assets/tray.webp",
+    "bytes": 6778,
+    "sha256": "945fee2c598d45d662d3c8ce536629199bd2a8b6d2c19eb0ca01cd6e7f7bd529"
+  },
+  {
+    "path": "docs/sakoon-assets/verify.webp",
+    "bytes": 34042,
+    "sha256": "50a6b1be5fafbf4f7ea2cfd85a04971765f876e4935a29913221c33c973cfdca"
+  },
+  {
+    "path": "docs/table-format-guide.md",
+    "bytes": 4802,
+    "sha256": "a8402bf275e62482aaf93650b1c92228fc99481614a3de552c693ffcc5da68bd"
+  },
+  {
+    "path": "docs/troubleshooting.md",
+    "bytes": 2419,
+    "sha256": "5ecce16c8fad4f296b643cde0169f90e01d0a5a35d9526a1244d09e34f514298"
+  },
+  {
+    "path": "publish.bat",
+    "bytes": 9342,
+    "sha256": "32ffd7cc07f5e1baf097b7765ea1fbe1f88d261f48e198fd08c6b71b14704a0c"
+  },
+  {
+    "path": "release-assets/PUT-Sakoon.exe-HERE.txt",
+    "bytes": 823,
+    "sha256": "fae58da0bddc159824294d1b78fc2e17a1b90cdbf16f7b98919494360aefb227"
+  },
+  {
+    "path": "release-assets/Sakoon-Table-Format-Example-NOT-OFFICIAL.csv",
+    "bytes": 135,
+    "sha256": "aead7075a130fc320652104fbc4c50d3222561c15d91f61da383ecd77f0f84df"
+  },
+  {
+    "path": "releases/v1.0.0.md",
+    "bytes": 2472,
+    "sha256": "c0b246c58be9f1eac4516713cd9bade181644ace4b1860b3f83a2c6023aacaa9"
+  },
+  {
+    "path": "releases/v2.0.0.md",
+    "bytes": 3755,
+    "sha256": "28f65690cfa58b74a6f7329ae9c0e20902cb6dcba204d57d955a2cb519e8ecce"
+  },
+  {
+    "path": "samples/README.md",
+    "bytes": 346,
+    "sha256": "581edc4daa50c169f816aa5af200efbf4900b67f7f585081490df349ecc6c165"
+  },
+  {
+    "path": "samples/Sakoon-Arabic-Headers-Example-NOT-OFFICIAL.csv",
+    "bytes": 184,
+    "sha256": "5b5f72dba200ac16780aaccc47eeb4d4db539eede3635af6610ece07c0a55146"
+  },
+  {
+    "path": "samples/Sakoon-Table-Format-Example-NOT-OFFICIAL.csv",
+    "bytes": 135,
+    "sha256": "aead7075a130fc320652104fbc4c50d3222561c15d91f61da383ecd77f0f84df"
+  }
+]

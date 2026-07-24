@@ -1,0 +1,91 @@
+name: Region or authority-table request
+description: Request support or document a verified official table layout
+title: "[Region]: "
+labels:
+  - region-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Sakoon does not declare a schedule official. Provide the issuing
+        authority's publication link and exact region. Do not upload a file
+        unless you have permission to redistribute it.
+
+  - type: input
+    id: country
+    attributes:
+      label: Country
+    validations:
+      required: true
+
+  - type: input
+    id: region
+    attributes:
+      label: City, emirate, governorate, or region
+      placeholder: Dubai
+    validations:
+      required: true
+
+  - type: input
+    id: authority
+    attributes:
+      label: Issuing authority
+    validations:
+      required: true
+
+  - type: input
+    id: official_url
+    attributes:
+      label: Official publication URL
+      description: Link directly to the issuing authority where possible.
+    validations:
+      required: true
+
+  - type: input
+    id: period
+    attributes:
+      label: Month and year
+      placeholder: July 2026
+    validations:
+      required: true
+
+  - type: dropdown
+    id: format
+    attributes:
+      label: Published format
+      options:
+        - CSV
+        - XLSX
+        - XLS
+        - PDF
+        - Web table
+        - Image
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: layout
+    attributes:
+      label: Table layout
+      description: Describe header row, date format, prayer columns, language, merged cells, and worksheets.
+    validations:
+      required: true
+
+  - type: textarea
+    id: transformations
+    attributes:
+      label: Transformations already attempted
+      description: State exactly what was changed from the authority's original file.
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmation
+      options:
+        - label: The URL is from the issuing authority or clearly identifies its source.
+          required: true
+        - label: I have not changed the published prayer times.
+          required: true
+        - label: I understand that a preset or calculation is not an official ruling.
+          required: true

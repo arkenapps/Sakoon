@@ -1,0 +1,47 @@
+Sakoon/
+└── .gitattributes
+└── .github/
+  └── ISSUE_TEMPLATE/
+    └── bug_report.yml
+    └── config.yml
+    └── region_table_request.yml
+  └── PULL_REQUEST_TEMPLATE.md
+└── .gitignore
+└── CHANGELOG.md
+└── CODE_OF_CONDUCT.md
+└── CONTRIBUTING.md
+└── LICENSE.txt
+└── PUBLISHING.md
+└── README.md
+└── REPOSITORY-CHECKLIST.md
+└── SECURITY.md
+└── SUPPORT.md
+└── assets/
+  └── brand/
+    └── sakoon-icon-1024.png
+    └── sakoon-icon-256.png
+    └── sakoon.ico
+  └── screenshots/
+    └── README.md
+    └── dashboard-placeholder.svg
+    └── themes-placeholder.svg
+    └── tray-placeholder.svg
+    └── verify-placeholder.svg
+└── docs/
+  └── about.md
+  └── privacy.md
+  └── table-format-guide.md
+  └── troubleshooting.md
+└── PUBLISH-V2-UPDATE.bat
+└── publish.bat
+└── release-assets/
+  └── PUT-Sakoon.exe-HERE.txt
+  └── Sakoon-Table-Format-Example-NOT-OFFICIAL.csv
+└── releases/
+  └── v1.0.0.md
+  └── v2.0.0.md
+└── repository-manifest.json
+└── samples/
+  └── README.md
+  └── Sakoon-Arabic-Headers-Example-NOT-OFFICIAL.csv
+  └── Sakoon-Table-Format-Example-NOT-OFFICIAL.csv

@@ -1,0 +1,54 @@
+# Private application source does not belong in this repository
+*.go
+go.mod
+go.sum
+vendor/
+cmd/
+internal/
+pkg/
+
+# Build output and release binaries
+*.exe
+*.dll
+*.msi
+*.pdb
+*.syso
+dist/
+build/
+bin/
+
+# Local release staging
+release-assets/Sakoon.exe
+release-assets/SHA256SUMS.txt
+release-assets/Sakoon_App.zip
+
+# Secrets and signing
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+*.crt
+.env
+.env.*
+secrets/
+certificates/
+
+# Local application data and timing imports
+data/
+logs/
+*.log
+*.db
+*.sqlite
+*.sqlite3
+private-tables/
+official-tables/
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,27 @@
+SAKOON GITHUB WEBSITE UPDATE
+=============================
+
+1. Extract this ZIP.
+2. Copy every file and folder inside Sakoon_GitHub_Website_Update into your
+   existing local Sakoon repository folder.
+3. Choose Replace/Overwrite when Windows asks.
+
+Your existing local repository is the folder containing:
+   .git
+   README.md
+   publish.bat
+
+Based on your screenshot, it is likely:
+D:\Cool_Projects_2026\20_Sukoon\Sakoon_GitHub_Repository\Sakoon
+
+4. After copying, double-click:
+   PUBLISH-WEBSITE-UPDATE.bat
+
+5. Type:
+   UPDATE
+
+The script pushes the real screenshots, updated README and GitHub Pages site,
+then enables Pages from main /docs.
+
+Expected GitHub Pages URL:
+https://arkenapps.github.io/Sakoon/

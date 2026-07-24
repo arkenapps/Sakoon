@@ -1,0 +1,123 @@
+name: Bug report
+description: Report a reproducible Sakoon problem
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve Sakoon.
+
+        Do not include private timing documents, credentials, full usernames,
+        private file paths, or sensitive logs. Security vulnerabilities must be
+        reported privately under SECURITY.md.
+
+  - type: input
+    id: version
+    attributes:
+      label: Sakoon version
+      description: "Example: v2.0.0"
+      placeholder: v2.0.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Audio mute
+        - Audio restore or crash recovery
+        - Sleep or wake scheduling
+        - Timing-table import
+        - Official/calculated verification
+        - System tray
+        - Startup
+        - User interface or theme
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2, x64
+    validations:
+      required: true
+
+  - type: input
+    id: audio
+    attributes:
+      label: Audio device or setup
+      description: Remove serial numbers or private device names.
+      placeholder: Built-in speakers / Bluetooth headset / USB dock
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable sequence.
+      placeholder: |
+        1. Start Sakoon...
+        2. Select...
+        3. Wait until...
+        4. Observe...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: timing_source
+    attributes:
+      label: Timing-source context
+      description: State official upload or calculated fallback. Do not upload a private table.
+      placeholder: Official CSV for Dubai, July 2026 / Calculated — unofficial
+
+  - type: dropdown
+    id: power_event
+    attributes:
+      label: Was sleep, hibernation, docking, or an audio-device change involved?
+      options:
+        - "No"
+        - Sleep
+        - Hibernation
+        - Dock or undock
+        - Headphones connected or removed
+        - Bluetooth device change
+        - More than one of these
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitised evidence
+      description: Add screenshots or short logs only after removing personal information.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I reproduced this on the latest official release.
+          required: true
+        - label: I removed personal and sensitive information.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
