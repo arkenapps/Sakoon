@@ -1,0 +1,115 @@
+ARKENAPPS PERSONAL USE LICENCE
+Version 1.0 — Sakoon
+
+Copyright (c) 2026 ArkenApps. All rights reserved.
+
+This licence applies to the Sakoon software, executable files, accompanying
+documentation, artwork, and other materials distributed by ArkenApps
+(collectively, the "Software").
+
+1. PERSONAL-USE PERMISSION
+
+Subject to this licence, ArkenApps grants an individual a limited,
+non-exclusive, non-transferable, revocable permission to download, install,
+and use an unmodified official copy of the Software for personal,
+non-commercial purposes.
+
+No ownership rights are transferred. The Software is licensed, not sold.
+
+2. PERMITTED SHARING
+
+You may share a link to the official ArkenApps GitHub release page or official
+ArkenApps website.
+
+You may not re-upload, mirror, host, bundle, distribute, or make the Software
+available from another download location without prior written permission from
+ArkenApps.
+
+3. RESTRICTIONS
+
+Unless ArkenApps gives prior written permission, you may not:
+
+a. sell, rent, lease, sublicense, monetise, or charge for access to the
+   Software;
+b. include the Software in a paid product, service, device image, support
+   package, training package, commercial bundle, or managed deployment;
+c. use the Software primarily for a business, institutional, governmental, or
+   other commercial operation;
+d. redistribute or rehost the executable or installer, whether modified or
+   unmodified;
+e. remove or alter copyright, brand, attribution, licence, or disclaimer
+   notices;
+f. modify, adapt, translate, create derivative software from, decompile,
+   disassemble, or reverse engineer the Software, except only to the minimum
+   extent that applicable law expressly permits and does not allow this
+   restriction;
+g. represent Sakoon as an official product of any mosque, awqaf body,
+   government, religious authority, Microsoft, or other third party;
+h. use the ArkenApps, Arkenstone, or Sakoon names, logos, icons, or visual
+   identity to imply endorsement or affiliation.
+
+4. SOURCE CODE
+
+The source code is not provided or licensed under this repository. Publication
+of documentation, issue templates, timing-table examples, or binary releases
+does not make the Software open source.
+
+5. COMMERCIAL AND ORGANISATIONAL USE
+
+Commercial, business, institutional, governmental, educational, managed,
+preinstalled, or large-scale use requires a separate written licence from
+ArkenApps.
+
+Contact: arkenapps@outlook.com
+
+6. USER-PROVIDED TIMING DATA
+
+Users remain responsible for the timing tables they obtain, prepare, or upload.
+Users must ensure they have the right to use or share those files. Contribution
+of a timing table does not transfer ownership of an authority's publication to
+ArkenApps.
+
+7. RELIGIOUS AND TIMING DISCLAIMER
+
+Sakoon is a convenience utility. It is not a religious authority, prayer-time
+authority, mosque, or substitute for an official awqaf publication. Official
+authorities and the user's local mosque take precedence over every displayed,
+imported, or calculated time.
+
+Calculated times are estimates and must be identified as unofficial. The
+Software must not be relied upon as the user's only prayer reminder.
+
+8. NO WARRANTY
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS" AND
+"AS AVAILABLE", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EXPRESS,
+IMPLIED, OR STATUTORY, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, ACCURACY, RELIABILITY, AVAILABILITY, NON-INFRINGEMENT, OR
+THAT THE SOFTWARE WILL BE ERROR-FREE.
+
+9. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, ARKENAPPS AND ITS CONTRIBUTORS WILL NOT
+BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR
+PUNITIVE LOSS, OR FOR LOSS OF DATA, AUDIO STATE, BUSINESS, REVENUE, USE,
+GOODWILL, OR OPPORTUNITY ARISING FROM OR RELATED TO THE SOFTWARE.
+
+10. TERMINATION
+
+This permission ends automatically if you breach this licence. On termination,
+you must stop using the Software and delete all copies in your possession or
+control.
+
+11. SEVERABILITY
+
+If any provision is found unenforceable, the remaining provisions continue in
+effect to the fullest extent permitted by law.
+
+12. PERMISSION REQUESTS
+
+For commercial licensing, redistribution, institutional deployment, or other
+permissions, contact:
+
+ArkenApps
+arkenapps@outlook.com
+https://arkenapps.com/

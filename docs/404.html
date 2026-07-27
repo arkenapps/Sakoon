@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found — Sakoon | ArkenApps</title>
+  <meta name="description" content="Sakoon is a private, local-first Windows desktop app that mutes PC audio before each azaan and safely restores it afterwards. Official timing tables first, no account, no ads, no telemetry.">
+  <meta name="theme-color" content="#070D16">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://arkenapps.com/azaan-audio-guard.html">
+  <link rel="icon" href="sakoon-assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="sakoon-assets/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="sakoon-assets/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sakoon — Your PC can observe the azaan too">
+  <meta property="og:description" content="A private Windows desktop app that mutes system audio around official azaan times. Local-first, no account, no telemetry.">
+  <meta property="og:url" content="https://arkenapps.com/azaan-audio-guard.html">
+  <meta property="og:image" content="https://arkenapps.com/sakoon-assets/og-sakoon.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root{
+      --ink:#070D16; --deep:#0C1624;
+      --cyan:#4FD8EB; --cyan-soft:#8DE8F3; --cyan-dim:rgba(79,216,235,.34);
+      --brass:#C9A45C; --brass-light:#E8C97F;
+      --text:#EAF5F7; --muted:#8FA5B8; --faint:#5C7188;
+      --line:rgba(79,216,235,.16); --line-soft:rgba(148,197,255,.09);
+      --glass:rgba(148,197,255,.045);
+      --max:1160px;
+      --display:"Bahnschrift","Segoe UI Semibold","Segoe UI",sans-serif;
+      --body:"Segoe UI",system-ui,-apple-system,sans-serif;
+      --mono:"Cascadia Mono",Consolas,monospace;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--text); font-family:var(--body); line-height:1.65;
+      background:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased;
+    }
+
+    .sky{position:fixed;inset:0;z-index:-2;pointer-events:none;
+      background:
+        radial-gradient(1100px 680px at 78% -6%,rgba(79,216,235,.13),transparent 62%),
+        radial-gradient(900px 620px at 6% 104%,rgba(201,164,92,.10),transparent 60%),
+        linear-gradient(178deg,var(--deep),var(--ink) 66%);
+    }
+    .stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+      background-image:
+        radial-gradient(1.4px 1.4px at 18% 22%,rgba(217,228,240,.9),transparent),
+        radial-gradient(1.1px 1.1px at 62% 12%,rgba(217,228,240,.55),transparent),
+        radial-gradient(1.6px 1.6px at 84% 46%,rgba(217,228,240,.7),transparent),
+        radial-gradient(1.1px 1.1px at 34% 68%,rgba(217,228,240,.5),transparent),
+        radial-gradient(1.3px 1.3px at 8% 86%,rgba(217,228,240,.65),transparent),
+        radial-gradient(1px 1px at 72% 88%,rgba(217,228,240,.45),transparent);
+      background-size:280px 280px,340px 340px,420px 420px,300px 300px,380px 380px,460px 460px;
+      animation:twinkle 8s ease-in-out infinite;
+    }
+    @keyframes twinkle{0%,100%{opacity:.38}50%{opacity:.62}}
+
+    .wrap{width:min(100% - 40px,var(--max));margin-inline:auto}
+
+    .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:.32s ease}
+    .site-header.stuck{
+      background:rgba(7,13,22,.82);backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom-color:var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;transition:.32s ease}
+    .site-header.stuck .nav{padding:10px 0}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{width:38px;height:38px;border-radius:11px}
+    .brand span{font-family:var(--display);letter-spacing:.34em;font-size:.95rem;line-height:1.15}
+    .brand small{display:block;letter-spacing:.16em;font-size:.6rem;color:var(--faint);font-family:var(--body)}
+    .nav-links{display:flex;align-items:center;gap:26px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
+    .nav-links a:hover{color:var(--cyan)}
+
+    .button{display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+      font-family:var(--display);letter-spacing:.1em;font-size:.82rem;
+      padding:13px 26px;border-radius:999px;border:1px solid var(--line);
+      color:var(--text);background:var(--glass);transition:.24s ease;white-space:nowrap}
+    .button:hover{transform:translateY(-2px)}
+    .button.primary{background:linear-gradient(135deg,var(--cyan),#39b9cc);color:#04202a;border-color:transparent;font-weight:600}
+    .button.primary:hover{box-shadow:0 12px 34px rgba(79,216,235,.34)}
+    .button.brass{background:linear-gradient(135deg,var(--brass-light),var(--brass));color:#2a1d06;border-color:transparent;font-weight:600}
+    .button.brass:hover{box-shadow:0 12px 34px rgba(201,164,92,.32)}
+    .button.ghost:hover{border-color:var(--cyan-dim);color:var(--cyan)}
+    .button.compact{padding:9px 18px;font-size:.76rem}
+
+    .hero{position:relative;padding:74px 0 40px;overflow:hidden}
+    .hero-glyph{position:absolute;right:-2%;top:2%;font-size:23rem;line-height:1;
+      color:rgba(79,216,235,.035);pointer-events:none;user-select:none;font-family:var(--display)}
+    .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);
+      font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);
+      padding:7px 15px;border:1px solid var(--cyan-dim);border-radius:999px;background:rgba(79,216,235,.06)}
+    .hero h1{font-family:var(--display);font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.08;
+      margin:22px 0 0;letter-spacing:-.01em;font-weight:600}
+    .hero h1 span{background:linear-gradient(120deg,var(--cyan),var(--brass-light));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero h1 em{font-style:normal;color:var(--brass);font-size:.62em;display:block;margin-top:8px;letter-spacing:.06em}
+    .hero p.lede{color:var(--muted);font-size:1.06rem;margin:20px 0 0;max-width:34rem}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+    .micro{color:var(--faint);font-size:.78rem;margin-top:18px}
+
+    .dial-frame{position:relative;display:grid;place-items:center;aspect-ratio:1;max-width:430px;margin-inline:auto;width:100%}
+    .dial-frame::before{content:"";position:absolute;inset:8%;border-radius:50%;
+      background:radial-gradient(circle,rgba(79,216,235,.11),transparent 68%);filter:blur(14px)}
+    .dial{width:100%;height:auto;position:relative}
+    .dial .ring{fill:none;stroke:var(--line);stroke-width:1}
+    .dial .arc{fill:none;stroke:var(--brass);stroke-width:1.6;opacity:.5;stroke-linecap:round}
+    .dial .tick{stroke:rgba(148,197,255,.22);stroke-width:1}
+    .dial .node{fill:var(--ink);stroke:var(--cyan);stroke-width:1.6}
+    .dial .node.on{fill:var(--cyan);animation:pulse 3.4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+    .dial .lbl{font-family:var(--display);font-size:8.5px;letter-spacing:.16em;fill:var(--faint)}
+    .dial .lbl.on{fill:var(--cyan)}
+    .hand{transform-origin:210px 210px;animation:sweep 72s linear infinite}
+    @keyframes sweep{to{transform:rotate(360deg)}}
+    .dial-core{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none;z-index:2}
+    .dial-core .k{font-family:var(--display);font-size:.6rem;letter-spacing:.26em;color:var(--faint)}
+    .dial-core .v{font-family:var(--display);font-size:1.5rem;letter-spacing:.13em;color:var(--text);margin:2px 0}
+    .dial-core .t{font-family:var(--mono);font-size:1.55rem;color:var(--cyan);letter-spacing:.04em}
+    .dial-core .s{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:2px}
+
+    .trust{display:grid;grid-template-columns:repeat(5,1fr);border-block:1px solid var(--line);margin-top:52px}
+    .trust div{padding:20px 22px;border-right:1px solid var(--line)}
+    .trust div:last-child{border-right:0}
+    .trust strong{display:block;color:var(--cyan-soft);font-size:.9rem;font-weight:600}
+    .trust span{color:var(--faint);font-size:.78rem}
+
+    section{padding:76px 0}
+    .head{max-width:44rem;margin-bottom:44px}
+    .head h2{font-family:var(--display);font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.16;margin:16px 0 0;font-weight:600}
+    .head p{color:var(--muted);margin:14px 0 0;font-size:1rem}
+
+    .card{background:var(--glass);border:1px solid var(--line-soft);border-radius:16px;padding:26px;
+      transition:.26s ease;position:relative;overflow:hidden}
+    .card:hover{border-color:var(--cyan-dim);transform:translateY(-3px);background:rgba(148,197,255,.07)}
+    .card h3{font-family:var(--display);font-size:1.02rem;margin:0 0 9px;letter-spacing:.02em;font-weight:600}
+    .card p{color:var(--muted);font-size:.9rem;margin:0}
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+
+    .story{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+    .quote{font-family:var(--display);font-size:1.32rem;line-height:1.45;color:var(--cyan-soft);
+      border-left:2px solid var(--brass);padding-left:24px}
+    .story p{color:var(--muted);margin:0 0 16px}
+    .story strong{color:var(--text)}
+
+    .rail{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line-soft);border-radius:16px;overflow:hidden}
+    .rail div{padding:26px 20px;border-right:1px solid var(--line-soft);text-align:center;transition:.24s}
+    .rail div:last-child{border-right:0}
+    .rail div:hover{background:rgba(148,197,255,.05)}
+    .rail .ar{font-size:1.5rem;color:var(--brass);line-height:1}
+    .rail .en{font-family:var(--display);letter-spacing:.2em;font-size:.76rem;color:var(--text);margin-top:10px}
+    .rail .no{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:4px}
+
+    .src{padding:30px}
+    .src .tag{font-family:var(--display);font-size:.64rem;letter-spacing:.2em;padding:5px 12px;
+      border-radius:999px;display:inline-block;margin-bottom:16px}
+    .src.official .tag{color:var(--ink);background:var(--cyan)}
+    .src.calc .tag{color:var(--brass-light);border:1px solid rgba(201,164,92,.4)}
+    .src ul{margin:14px 0 0;padding-left:18px;color:var(--muted);font-size:.9rem}
+    .src li{margin-bottom:7px}
+
+    .rule{padding:24px}
+    .rule .n{font-family:var(--mono);font-size:.72rem;color:var(--brass);letter-spacing:.14em;margin-bottom:12px}
+
+    .shot{border:1px solid var(--line-soft);border-radius:18px;overflow:hidden;background:var(--deep)}
+    .shot img{width:100%;display:block}
+    .shot-meta{padding:18px 22px;border-top:1px solid var(--line-soft)}
+    .shot-meta strong{font-family:var(--display);letter-spacing:.04em;font-size:.94rem}
+    .shot-meta p{color:var(--muted);font-size:.86rem;margin:5px 0 0}
+    .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
+    .thumb{padding:0;border:1px solid var(--line-soft);border-radius:11px;overflow:hidden;
+      background:none;cursor:pointer;transition:.2s;opacity:.5}
+    .thumb img{width:100%;display:block}
+    .thumb:hover{opacity:.85}
+    .thumb.active{opacity:1;border-color:var(--cyan)}
+
+    .regions{display:flex;flex-wrap:wrap;gap:10px}
+    .regions span{padding:9px 17px;border:1px solid var(--line-soft);border-radius:999px;
+      color:var(--muted);font-size:.84rem;transition:.2s}
+    .regions span:hover{border-color:var(--cyan-dim);color:var(--cyan)}
+
+    .dl{border:1px solid var(--line);border-radius:22px;padding:44px;
+      background:linear-gradient(140deg,rgba(79,216,235,.075),rgba(201,164,92,.05));
+      display:grid;grid-template-columns:1.4fr auto;gap:34px;align-items:center}
+    .dl h2{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.05rem);margin:16px 0 0;font-weight:600}
+    .dl p{color:var(--muted);margin:14px 0 0;max-width:33rem}
+    .dl-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .dl-meta span{font-family:var(--mono);font-size:.72rem;color:var(--faint);
+      border:1px solid var(--line-soft);border-radius:7px;padding:5px 11px}
+
+    .notice{border:1px solid rgba(201,164,92,.28);border-left:3px solid var(--brass);
+      border-radius:14px;padding:26px 28px;background:rgba(201,164,92,.05);margin-top:26px}
+    .notice h3{font-family:var(--display);font-size:1rem;margin:0 0 10px;color:var(--brass-light);font-weight:600}
+    .notice p{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+    .notice p:last-child{margin-bottom:0}
+    .notice code{font-family:var(--mono);font-size:.82rem;color:var(--cyan-soft);
+      background:rgba(79,216,235,.08);padding:2px 7px;border-radius:5px}
+
+    details{border-bottom:1px solid var(--line-soft);padding:20px 0}
+    summary{cursor:pointer;font-family:var(--display);font-size:1rem;list-style:none;
+      display:flex;justify-content:space-between;gap:18px;align-items:center;font-weight:600}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";color:var(--cyan);font-size:1.25rem;flex:none;transition:.2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{color:var(--muted);font-size:.92rem;margin:14px 0 0;max-width:52rem}
+
+    .disclaimer{border:1px solid rgba(232,120,109,.26);border-left:3px solid #E8786D;
+      border-radius:14px;padding:26px 28px;background:rgba(232,120,109,.05)}
+    .disclaimer h3{font-family:var(--display);font-size:1rem;margin:0 0 10px;color:#F0A49C;font-weight:600}
+    .disclaimer p{color:var(--muted);font-size:.92rem;margin:0}
+
+    footer{border-top:1px solid var(--line);padding:38px 0 46px;margin-top:30px}
+    .foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:26px;color:var(--faint);font-size:.85rem}
+    .foot a{color:var(--muted);text-decoration:none}
+    .foot a:hover{color:var(--cyan)}
+    .dua{color:var(--brass);font-style:italic}
+
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+    .rv.in{opacity:1;transform:none}
+
+    @media (max-width:960px){
+      .hero-grid,.story,.dl{grid-template-columns:1fr}
+      .dial-frame{max-width:340px;margin-top:14px}
+      .trust,.rail{grid-template-columns:repeat(2,1fr)}
+      .trust div,.rail div{border-right:0;border-bottom:1px solid var(--line-soft)}
+      .grid-4,.grid-5,.grid-2{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:1fr}
+      .nav-links a:not(.button){display:none}
+      .hero-glyph{font-size:13rem}
+    }
+    @media (max-width:620px){
+      .trust,.rail,.grid-4,.grid-5,.grid-2{grid-template-columns:1fr}
+      .thumbs{grid-template-columns:repeat(2,1fr)}
+      section{padding:56px 0}
+      .dl{padding:30px}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important;transition:none !important}
+      .rv{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+
+<header class="site-header stuck" id="siteHeader">
+  <div class="wrap nav">
+    <a class="brand" href="./" aria-label="Sakoon home">
+      <img src="sakoon-assets/sakoon-icon-256.png" alt="">
+      <span>SAKOON<small>AZAAN AUDIO GUARD</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="./#how">How it works</a>
+      <a href="./#screens">Screenshots</a>
+      <a href="./#privacy">Privacy</a>
+      <a href="https://github.com/arkenapps/Sakoon" target="_blank" rel="noopener">GitHub</a>
+      <a class="button primary compact" href="https://github.com/arkenapps/Sakoon/releases/latest">Download</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="padding-top:56px">
+    <div class="hero-glyph" aria-hidden="true">سكون</div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Error 404</div>
+        <h1>This page has gone <span>quiet</span>.<em>سكون</em></h1>
+        <p class="lede">
+          The address you followed does not exist on the Sakoon site. It may have
+          been renamed, or the link may simply be mistyped.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="./">Back to Sakoon</a>
+          <a class="button ghost" href="https://github.com/arkenapps/Sakoon/releases/latest">Download</a>
+          <a class="button ghost" href="https://github.com/arkenapps/Sakoon">GitHub</a>
+        </div>
+        <p class="micro">Windows 10 and 11 · One self-contained file · No admin rights</p>
+      </div>
+
+      <div class="dial-frame">
+        <svg class="dial" viewBox="0 0 420 420" role="img" aria-label="Prayer dial">
+          <circle class="ring" cx="210" cy="210" r="172"/>
+          <circle class="ring" cx="210" cy="210" r="138"/>
+          <circle class="ring" cx="210" cy="210" r="96" style="stroke:var(--line-soft)"/>
+          <path class="arc" d="M 96 296 A 138 138 0 0 1 324 296"/>
+          <g class="hand">
+            <line x1="210" y1="210" x2="210" y2="82" stroke="#C9A45C" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+            <circle cx="210" cy="82" r="3.4" fill="#C9A45C"/>
+          </g>
+          <circle cx="210" cy="210" r="3" fill="#4FD8EB"/>
+        </svg>
+        <div class="dial-core">
+          <div class="k">STATUS</div>
+          <div class="v">NOT FOUND</div>
+          <div class="t">404</div>
+          <div class="s">nothing scheduled here</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2>Try one of these instead</h2></div>
+      <div class="grid-4">
+        <a class="card" style="text-decoration:none;display:block" href="./#how"><h3>How it works</h3><p>What Sakoon does around each azaan, and what it deliberately does not do.</p></a>
+        <a class="card" style="text-decoration:none;display:block" href="./#screens"><h3>Screenshots</h3><p>The dashboard, timing sources, verification view, settings, and tray menu.</p></a>
+        <a class="card" style="text-decoration:none;display:block" href="./#privacy"><h3>Privacy</h3><p>No account, no telemetry, and no open network ports.</p></a>
+        <a class="card" style="text-decoration:none;display:block" href="https://github.com/arkenapps/Sakoon/releases/latest"><h3>Download</h3><p>The latest release, with published SHA-256 checksums.</p></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><strong style="color:var(--text)">ArkenApps</strong><br>Designed by Arkenstone · Local-first software · No tracking</div>
+    <div>
+      <a href="https://github.com/arkenapps/Sakoon">GitHub</a> ·
+      <a href="https://github.com/arkenapps/Sakoon/releases/latest">Releases</a> ·
+      <a href="https://arkenapps.com/">ArkenApps.com</a>
+    </div>
+    <div class="dua">A du'a for those who built it is more than enough.</div>
+  </div>
+</footer>
+</body>
+</html>
